@@ -1,0 +1,147 @@
+@use "../../abstract/index" as *;
+
+#PluginHeader {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
+
+    > nav {
+        flex-grow: 0;
+    }
+    > main {
+        height: 100%;
+        flex-grow: 1;
+        overflow: hidden;
+        section.plugins-row {
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+            flex-grow: 1;
+            transition: all 0.3s ease-in-out;
+            padding: 0 !important;
+            .cover {
+                padding-top: 24px;
+                padding-inline: 16px;
+                height: 100%;
+                overflow: auto;
+                @include respond(350) {
+                    padding-inline: 10px;
+                }
+                &::-webkit-scrollbar {
+                    width: 5px;
+                    transition: all 0.3s ease-in-out;
+                }
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: var(--secound);
+                    &:hover {
+                        background: rgb(0, 0, 38);
+                    }
+                }
+                .container-fluid {
+                    height: max-content;
+                    .row-container {
+                        height: max-content;
+                    }
+                    .column {
+                        margin-bottom: 24px;
+                        width: 100%;
+                        a {
+                            display: block;
+                            width: fit-content;
+                            margin: auto;
+                            border-radius: 10px;
+                            height: 100%;
+                        }
+                        .item {
+                            position: relative;
+                            text-align: center;
+                            background-color: #fff;
+                            padding: 16px;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            height: 100%;
+                            max-width: 370px;
+                            margin: auto;
+                            transition-duration: 0.3s;
+                            @include flex($dir: column);
+
+                            &::before {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                @include createElement($h: 100%);
+                                background-image: url("../imgs/noise-50_bg.avif");
+                                opacity: 1;
+                            }
+
+                            &:hover {
+                                box-shadow: rgba(0, 0, 0, 0.56) 0px 2px 20px 4px;
+                                transform: translateY(-5px);
+                                &::before {
+                                    opacity: 0;
+                                }
+                            }
+                            .top-right,
+                            .top-left {
+                                position: absolute;
+                                top: 5px;
+                                width: 40px;
+                            }
+                            .top-right {
+                                right: 5px;
+                                // transform: rotate(-45deg);
+                            }
+                            .top-left {
+                                left: 5px;
+                            }
+                            .plugin {
+                                &__logo {
+                                    width: 75px;
+                                    margin: auto;
+                                    img {
+                                        width: 100%;
+                                    }
+                                }
+                                &__name {
+                                    margin-top: 10px;
+                                    h3 {
+                                        font-size: 22px;
+                                        @include respond(350) {
+                                            font-size: 20px;
+                                        }
+                                    }
+                                }
+                                &__category {
+                                    width: fit-content;
+                                    padding: 7px;
+                                    background-color: #c2c0c0;
+                                    border-radius: 30px;
+                                    margin: 8px auto;
+                                    h4 {
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        margin-bottom: 0 !important;
+                                        padding: 5px;
+                                        @include respond(350) {
+                                            font-size: 12px;
+                                        }
+                                    }
+                                }
+                                &__description {
+                                    p {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

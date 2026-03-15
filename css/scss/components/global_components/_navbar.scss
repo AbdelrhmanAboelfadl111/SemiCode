@@ -1,0 +1,129 @@
+@use "../../abstract/index" as *;
+
+nav.navbar {
+    background: var(--bg-base);
+    border-bottom: 2px solid#2E295E;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    .container {
+        @include respond(850){
+            width: 90%!important;
+            form{
+                transform: translateX(0)!important;
+            }
+        }
+        .navbar-brand {
+            @include flex;
+            width: 200px;
+            img{
+                width: 45px;
+            }
+            h4{
+                letter-spacing: .3px;
+                color: #2E295E;
+            }
+        }
+        .collapse{
+            form {
+                transform: translateX(-8px);
+                input {
+                    width: 400px;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    border: 2px solid #919191;
+                    background: #ADA996;
+                    transition: all 0.5s;
+                        /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
+                        /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
+                        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+                    ::placeholder{
+                        text-align: center;
+                    }
+                    &:focus{
+                        box-shadow: none;
+                        border-color: var(--secound);
+                    }
+                }
+            }
+            ul.navbar-nav {
+                width: 200px;
+                height: 100%;
+                
+                li{
+                    position: relative;
+                    
+                    &.active {
+                            a{
+                                color: black;
+                            }
+                            &::after{
+                            @include createElement($w: 20px, $h: 15px);
+                            @include position($p: absolute, $t: 0,  $l: 0, $z: 0);
+                            border: 3px solid var(--secound);
+                            border-bottom: 0;
+                            border-right: 0;
+                            }
+                            ::before {
+                                @include createElement($w: 20px, $h: 15px);
+                                @include position($p: absolute, $b: 0, $r: 0, $z: 0);
+                                border: 3px solid var(--secound);
+                                border-top: 0;
+                                border-left: 0;
+                            }
+                        }
+                    height: 100%;
+                    a{
+                        color: gray;
+                        font-size: 17px;
+                        font-weight: 600;
+                    }
+                }
+            }
+            @include respond(350){
+                width: 100%;
+                @include flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                .navbar-brand{
+                    width: 40%;
+                    img{
+                        width: 30px;
+                    }
+                    h4{
+                        font-size: 17px;
+                    }
+                }
+                .item{
+                    width: 50%;
+                    form {
+                        width: 100%;
+                        input {
+                            width: 100%;
+                        }
+                    }
+                    }
+                    ul{
+                        @include flex;
+                        width: 100%!important;
+                        li{
+                            padding: 2px 15px;
+                        }
+                    }
+            }
+        }
+        @include respond(650){
+            max-width: 100%;
+            .navbar-brand{
+                width: initial!important;
+            }
+            .collapse{
+                flex-wrap: nowrap;
+                gap: 0;
+                ul{
+                    width: initial!important;
+                }
+            }
+        }
+    }
+}
