@@ -133,7 +133,8 @@ nav.navbar {
             ul.navbar-nav {
                 @include flex($ai: center);
                 gap: 6px;
-                margin: 0 !important;
+                margin-bottom: 0 !important;
+                margin-left: auto !important;
                 @include respond(350) {
                     margin-top: 10px !important;
                 }
