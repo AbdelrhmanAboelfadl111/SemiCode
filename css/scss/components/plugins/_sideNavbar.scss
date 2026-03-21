@@ -28,8 +28,9 @@
             $color-text: #111111;
             $color-text-soft: #666666;
             $color-border: #e7e7e7;
-            $color-hover: rgba(0, 0, 0, 0.11);
-            $color-active: rgba(133, 133, 133, 0.66);
+            $color-item: #dee8f976;
+            $color-item-hover: rgba(0, 0, 0, 0.11);
+            $color-active: #bebaff;
             $color-active-text: #ffffff;
             $color-shadow: rgba(0, 0, 0, 0.08);
 
@@ -58,14 +59,14 @@
                     @include respond(350) {
                         width: 78px;
                         min-width: 78px;
-                        img{
+                        img {
                             transform: translateX(-2px);
                         }
                     }
                     @include respond(450) {
                         width: 85px;
                         min-width: 85px;
-                        img{
+                        img {
                             transform: translateX(-3px);
                         }
                     }
@@ -207,7 +208,7 @@
                         transform $transition-fast;
 
                     &:hover {
-                        background: $color-hover;
+                        background: $color-item-hover;
                     }
 
                     &:active {
@@ -223,7 +224,6 @@
                     background: transparent;
                     border-radius: 999px;
                     transition: background $transition-main;
-
 
                     &::before,
                     .sidebar__toggle-line,
@@ -324,13 +324,14 @@
                     gap: $nav-item-gap;
                     padding: 0 $nav-item-padding-x;
                     border-radius: $nav-item-radius;
+                    background-color: $color-item;
                     transition:
                         background $transition-fast,
                         color $transition-fast;
                     overflow: hidden;
 
                     &:hover {
-                        background: $color-hover;
+                        background: $color-item-hover;
                     }
 
                     &.is-active {
@@ -372,7 +373,7 @@
                         transition:
                             opacity 0.2s ease,
                             visibility 0.2s ease;
-                            transition: all 0.3s;
+                        transition: all 0.3s;
                     }
                 }
             }

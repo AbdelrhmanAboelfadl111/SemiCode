@@ -4,49 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SemiCode - Plugins</title>
 
+    <!-- Primary Meta -->
+    <title>SemiCode - Plugins</title>
+    <meta name="description"
+        content="Browse and discover the best web development plugins, libraries, and tools. Filter by category including icons, animations, charts, forms, and more.">
+    <meta name="keywords"
+        content="web plugins, javascript libraries, css tools, ui components, icons, animations, charts, sliders, forms, developer tools">
+    <meta name="author" content="SemiCode">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SemiCode - Plugins">
+    <meta property="og:description"
+        content="Browse and discover the best web development plugins, libraries, and tools.">
+    <meta property="og:image" content="imgs/logoSemiCode.png">
+    <meta property="og:url" content="https://yourdomain.com/plugins.html">
+    <meta property="og:site_name" content="SemiCode">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SemiCode - Plugins">
+    <meta name="twitter:description"
+        content="Browse and discover the best web development plugins, libraries, and tools.">
+    <meta name="twitter:image" content="imgs/logoSemiCode.png">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="imgs/logoSemiCode.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="imgs/logoSemiCode.png">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/plugins/fonts.css">
     <link rel="stylesheet" href="css/plugins/all.min.css">
     <link rel="stylesheet" href="css/plugins/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <link rel="shortcut icon" href="imgs/logoSemiCode.png" type="image/x-icon">
-
-
-
 </head>
 
 <body>
 
 
     <header class="d-flex flex-column" id="PluginHeader">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container ">
+        <nav class="navbar navbar-expand-md">
+            <div class="container nav-content">
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="imgs/logoSemiCode.png" alt="logo SemiCode" class="img-fluid">
-                        <h4 class="mb-0 ms-1">SemiCode</h4>
-                    </a>
-                    <div class="item">
+                <a class="navbar-brand" href="index.html">
+                    <img src="imgs/logoSemiCode.png" alt="logo SemiCode" class="img-fluid">
+                    <h4 class="mb-0 ms-1">SemiCode</h4>
+                    <span class="navbar-brand__divider"></span>
+                    <span class="navbar-brand__page">Plugins</span>
+                </a>
+
+                <button class="navbar-toggler" id="navToggle" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <div class="item mx-auto">
                         <form class="d-flex justify-content-center align-items-center" role="search">
-                            <input class="form-control" type="search" placeholder="Search..." aria-label="Search" />
+                            <input class="form-control" type="search" name="q" placeholder="Search plugins..."
+                                aria-label="Search plugins" autocomplete="off" />
+                            <span class="search-kbd">⌘K</span>
                         </form>
-                        
                     </div>
+
                     <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-evenly">
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link " aria-current="page" href="plugins.html">Plugins</a>
+                            <a class="nav-link" href="plugins.html">Plugins</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
-        <main class="container-fluid">
+        <main class=" container-fluid">
             <div class="row row-container">
                 <aside class="sidebar is-closed" id="sidebar">
                     <div class="sidebar__inner">
@@ -65,16 +102,16 @@
                         </div>
 
                         <nav class="sidebar__nav" id="sidebar__nav">
-                            <span class="sidebar__active-pill" id="activePill"></span>
+
                         </nav>
                     </div>
                 </aside>
 
                 <section class="plugins-row d-flex justify-content-center align-items-center" id="plugins-row">
-                    <div class="cover">
-                        <div class="container-fluid d-flex justify-content-center ">
-                            <div class="row">
-                                
+                    <div class="cover" id="pluginsScrollContainer">
+                        <div class="container-fluid d-flex justify-content-center" id="pluginsSection">
+                            <div class="row" id="pluginsContainer">
+
                             </div>
                         </div>
                     </div>
@@ -82,11 +119,6 @@
             </div>
         </main>
     </header>
-
-
-    
-
-
 
     <script src="js/plugins/bootstrap.bundle.min.js"></script>
     <script src="js/data/plugins.js"></script>

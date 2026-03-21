@@ -1,101 +1,24 @@
-// show and hide side nav
-let iconCloseSideNav = document.querySelector(".sideNavIconCover");
-let sideNav = document.querySelector(".categories-row");
-let mainContent = document.querySelector(".accordion");
-let IconsForClosedSideNav = document.querySelector(".IconsForClosedSideNav");
-let pluginsCardsContainer = document.querySelector("section.plugins-row");
-
-/* iconCloseSideNav.querySelector("img").addEventListener("click", () => {
-  iconCloseSideNav.querySelector("form").classList.toggle("d-none");
-  iconCloseSideNav.querySelector("img").classList.toggle("closed");
-  mainContent.classList.toggle("hidden");
-  sideNav.classList.toggle("width-fitContent");
-  IconsForClosedSideNav.classList.toggle("d-flex");
-  pluginsCardsContainer.classList.toggle("WidthCoverAll");
-  if (sideNav.classList.contains("center")) {
-    sideNav.classList.toggle("center");
-  } else {
-    setTimeout(() => {
-      sideNav.classList.toggle("center");
-    }, 500);
-  }
-});
-
-allPlugins.forEach((plugin, index) => {
-  IconsForClosedSideNav.querySelector("ul").innerHTML += `
-    <li class="d-flex justify-content-center align-items-center" title="${plugin.groupName}">
-        <img src="${plugin.img}" alt="${plugin.groupName}">
-    </li>
-`;
-  let pluginsHtml = "";
-  plugin.content.forEach((item) => {
-    pluginsHtml += `
-            <div class="pluginCover rounded-4 d-flex justify-content-start align-items-center p-3 ">
-                <div class="pluginImgCover">
-                    <img src="${item.logoLink}" alt="${item.name}" class="pluginImage img-fluid">
-                </div>
-                <div class="pluginNameCover">
-                    <h4 class="pluginName mb-0 fs-6 fw-normal">${item.name}</h4>
-                </div>
-            </div>
-        `;
-  });
-  mainContent.innerHTML += `
-        <div class="accordion-item">
-            <h2 class="accordion-header mb-0">
-                <button class="accordion-button collapsed d-flex gap-2 fs-6" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapse${
-                      index + 1
-                    }" aria-expanded="false" aria-controls="flush-collapse${
-    index + 1
-  }">
-                    <img src="${plugin.img}" alt="${plugin.groupName}">
-                    <h3 class="mb-0 fw-normal categoryName">${
-                      plugin.groupName
-                    }</h3>
-                </button>
-            </h2>
-            <div id="flush-collapse${
-              index + 1
-            }" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">
-                    ${pluginsHtml}
-                </div>
-            </div>
-        </div>
-        `;
-        });
-        
-        // add Scrolled To IconsSideNav
-        let categoriesRow = document.querySelector(".categories-row");
-        categoriesRow.addEventListener("scroll", () => {
-          let IconSideNav = document.querySelector(".sideNavIconCover");
-          if (categoriesRow.scrollTop > 0) {
-            IconSideNav.classList.add("scrolled");
-            } else {
-              IconSideNav.classList.remove("scrolled");
-          }
-          });
-          // ---------------------------------------------------------------------
-          */
-
-//
-
+// ============================================================
+// Sidebar & Navigation
 window.addEventListener("DOMContentLoaded", function () {
   const sidebar = document.getElementById("sidebar");
   const toggleButton = document.getElementById("sidebarToggle");
-  const navItems = document.querySelectorAll("aside .nav-item");
-  const activePill = document.getElementById("activePill");
+
+  function getActivePill() {
+    return document.getElementById("activePill");
+  }
 
   function moveActivePill(target) {
+    const activePill = getActivePill();
     if (!target || !activePill) return;
-
     activePill.style.transform = `translateY(${target.offsetTop}px)`;
     activePill.style.height = `${target.offsetHeight}px`;
   }
 
   function setActiveItem(targetItem) {
-    navItems.forEach((item) => item.classList.remove("is-active"));
+    document
+      .querySelectorAll("aside .nav-item")
+      .forEach((item) => item.classList.remove("is-active"));
     targetItem.classList.add("is-active");
     moveActivePill(targetItem);
   }
@@ -103,19 +26,9 @@ window.addEventListener("DOMContentLoaded", function () {
   toggleButton.addEventListener("click", () => {
     sidebar.classList.toggle("is-closed");
     sidebar.classList.toggle("is-open");
-
-    const activeItem = document.querySelector("aside .nav-item.is-active");
-
     setTimeout(() => {
-      moveActivePill(activeItem);
+      moveActivePill(document.querySelector("aside .nav-item.is-active"));
     }, 220);
-  });
-
-  navItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.preventDefault();
-      setActiveItem(item);
-    });
   });
 
   window.addEventListener("load", () => {
@@ -124,7 +37,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("resize", () => {
     moveActivePill(document.querySelector("aside .nav-item.is-active"));
-
     if (window.innerWidth < 768) {
       sidebar.classList.add("is-closed");
       sidebar.classList.remove("is-open");
@@ -133,54 +45,121 @@ window.addEventListener("DOMContentLoaded", function () {
       sidebar.classList.add("is-open");
     }
   });
+
+  document
+    .getElementById("sidebar__nav")
+    .addEventListener("click", function (e) {
+      const navItem = e.target.closest(".nav-item");
+      if (!navItem) return;
+      if (navItem.classList.contains("is-active")) return;
+      setActiveItem(navItem);
+      renderCategoryPlugins(navItem);
+    });
 });
 
+// ============================================================
+// Sidebar Categories Spawn
 const pluginsCategoryRow = document.querySelector("#sidebar__nav");
-const pluginsRow = document.querySelector("#plugins-row .row");
 
-allPluginsCategory.forEach(function (pluginCategory, index) {
-  pluginsCategoryRow.innerHTML += `
-                <article class="nav-item ${
-                  index == 0 ? "is-active" : ""
-                }" data-index="${index}">
-                  <span class="nav-item__icon">
-                      <img src="${
-                        pluginCategory.img
-                      }" loading="lazy" alt="" class="img-fluid">
-                  </span>
-                  <span class="nav-item__text">${
-                    pluginCategory.groupName
-                  }</span>
-                </article>
+(function renderSidebarCategories() {
+  const allItem = `
+    <span class="sidebar__active-pill" id="activePill"></span>
+    <article class="nav-item is-active" data-category="all" data-index="1">
+      <span class="nav-item__icon">
+        <img src="imgs/icons/apps_14434519.png" loading="lazy" alt="All Category"
+          onerror="this.src='imgs/puzzle_4020290.png'" class="img-fluid">
+      </span>
+      <span class="nav-item__text">All Plugins</span>
+    </article>
   `;
+
+  const categoriesItems = allPluginsCategory
+    .map(
+      (pluginCategory, index) => `
+    <article class="nav-item" data-category="${
+      pluginCategory.category[0]
+    }" data-index="${index + 2}">
+      <span class="nav-item__icon">
+        <img src="${pluginCategory.img}" loading="lazy" alt="${
+        pluginCategory.groupName
+      }"
+          onerror="this.src='imgs/puzzle_4020290.png'" class="img-fluid">
+      </span>
+      <span class="nav-item__text">${pluginCategory.groupName}</span>
+    </article>
+  `
+    )
+    .join("");
+
+  pluginsCategoryRow.innerHTML = allItem + categoriesItems;
+})();
+
+// ============================================================
+// State
+const pluginsContainer = document.getElementById("pluginsContainer");
+const pluginsScrollContainer = document.getElementById(
+  "pluginsScrollContainer"
+);
+const searchInput = document.querySelector('input[type="search"]');
+const NUMBER_OF_PLUGINS_CARD = 6;
+
+let filteredPlugins = [...allPlugins];
+let visibleCountStart = 0;
+let visibleCountEnd = 12;
+let loading = false;
+
+// ============================================================
+// Search Index
+const searchIndex = allPlugins.map((plugin) => ({
+  plugin,
+  searchString:
+    `${plugin.name} ${plugin.category} ${plugin.keywords}`.toLowerCase(),
+}));
+
+// ============================================================
+// Init Plugins
+appendPlugins(filteredPlugins);
+
+// ============================================================
+// Search System
+function searchPlugins(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [...filteredPlugins]; // if search empty return all plugins
+  return searchIndex
+    .filter((item) => filteredPlugins.includes(item.plugin))
+    .filter((item) => item.searchString.includes(q))
+    .map((item) => item.plugin);
+}
+
+let searchTimeout;
+searchInput.addEventListener("input", () => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    const results = searchPlugins(searchInput.value);
+
+    visibleCountStart = 0;
+    visibleCountEnd = 12;
+    loading = false;
+
+    pluginsScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+    pluginsContainer.innerHTML = "";
+    appendPlugins(results);
+  }, 300);
 });
 
-allPlugins.forEach((plugin) => {
-  pluginsRow.innerHTML += `
-          <article class="column column1">
-              <a href="${plugin.link}" target="_blank">
-                  <div class="item">
-                      <img src="imgs/icons/hologram.gif" loading="lazy" alt=""
-                          class="img-fluid top-right">
+// ============================================================
+// When Scrolling = Add Plugins
+pluginsScrollContainer.addEventListener("scroll", () => {
+  const { scrollTop, clientHeight, scrollHeight } = pluginsScrollContainer;
+  const reachedBottom = scrollTop + clientHeight >= scrollHeight - 100;
 
-                      <div class="plugin__logo">
-                          <img src="${plugin.logoLink}" alt="${plugin.name}" loading="lazy" class="img-fluid">
-                      </div>
-                      <div class="plugin__name">
-                          <h3>${plugin.name}</h3>
-                      </div>
-                      <div class="plugin__category">
-                          <h4>${plugin.category}</h4>
-                      </div>
-
-                      <div class="plugin__description">
-                          <p>
-                            ${plugin.description}
-                          </p>
-                      </div>
-                  </div>
-              </a>
-          </article>
-  
-  `;
+  if (reachedBottom && !loading && visibleCountEnd < filteredPlugins.length) {
+    loading = true;
+    setTimeout(() => {
+      visibleCountStart = visibleCountEnd;
+      visibleCountEnd += NUMBER_OF_PLUGINS_CARD;
+      appendPlugins(filteredPlugins);
+      loading = false;
+    }, 200);
+  }
 });
