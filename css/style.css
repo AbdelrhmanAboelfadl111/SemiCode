@@ -269,7 +269,6 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   padding: 0 !important;
 }
 #PluginHeader > main section.plugins-row .cover {
-  padding-top: 24px;
   padding-inline: 16px;
   height: 100%;
   width: 100%;
@@ -294,11 +293,22 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   background: rgb(0, 0, 38);
 }
 #PluginHeader > main section.plugins-row .cover .container-fluid {
+  padding-block: 20px;
   height: 100%;
 }
 #PluginHeader > main section.plugins-row .cover .container-fluid .row {
+  min-height: 100%;
   height: max-content;
   flex: 1;
+}
+#PluginHeader > main section.plugins-row .cover .container-fluid .row > h4 {
+  height: max-content;
+  width: 100%;
+}
+#PluginHeader > main section.plugins-row .cover .container-fluid .row.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #PluginHeader > main section.plugins-row .cover .container-fluid .row .column {
   margin-bottom: 24px;
@@ -597,7 +607,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   width: 25px;
   height: 3px;
   border-radius: 999px;
-  background: #111111;
+  background: #5b5b5b;
   transition: top 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 #PluginHeader .container-fluid .row-container .sidebar__toggle-lines::before {
@@ -609,7 +619,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   transform: rotate(-45deg);
 }
 #PluginHeader .container-fluid .row-container .sidebar.is-closed #PluginHeader .container-fluid .row-container .sidebar__toggle-lines {
-  background: #111111;
+  background: #5b5b5b;
 }
 #PluginHeader .container-fluid .row-container .sidebar.is-closed #PluginHeader .container-fluid .row-container .sidebar__toggle-lines::before {
   top: -6px;
@@ -629,7 +639,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: #111111;
+  color: #5b5b5b;
 }
 #PluginHeader .container-fluid .row-container .sidebar__nav {
   position: relative;
@@ -674,11 +684,11 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   background: rgba(0, 0, 0, 0.11);
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item.is-active {
-  color: #ffffff;
+  color: #000;
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item.is-active .nav-item__icon,
 #PluginHeader .container-fluid .row-container .sidebar .nav-item.is-active .nav-item__text {
-  color: #ffffff;
+  color: #000;
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item__icon {
   width: 28px;
@@ -688,7 +698,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #111111;
+  color: #5b5b5b;
   transition: color 0.28s ease;
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item__icon i {
@@ -704,7 +714,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   white-space: nowrap;
   font-size: 15px;
   font-weight: 500;
-  color: #111111;
+  color: #5b5b5b;
   transition: opacity 0.2s ease, visibility 0.2s ease;
   transition: all 0.3s;
 }

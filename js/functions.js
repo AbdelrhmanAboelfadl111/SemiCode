@@ -49,15 +49,24 @@ function renderCategoryPlugins(that) {
 
 // Append Plugins
 function appendPlugins(arrayFiltered) {
-  const currentPlugins = arrayFiltered.slice(
-    visibleCountStart,
-    visibleCountEnd
-  );
-  const template = document.createElement("template");
-  const fragment = document.createDocumentFragment();
+  if (arrayFiltered.length == 0) {
+    pluginsContainer.classList.add("notFound");
 
-  currentPlugins.forEach((plugin) => {
-    template.innerHTML = `
+    let alertElement = `<h4 class="alert alert-danger mb-0 text-center">Not Found</h4>`;
+
+    pluginsContainer.innerHTML = `${alertElement}`;
+  } else {
+    const currentPlugins = arrayFiltered.slice(
+      visibleCountStart,
+      visibleCountEnd
+    );
+    pluginsContainer.classList.remove("notFound");
+
+    const template = document.createElement("template");
+    const fragment = document.createDocumentFragment();
+
+    currentPlugins.forEach((plugin) => {
+      template.innerHTML = `
         <article class="column column1 plugin-card-animate">
           <a href="${plugin.link}" target="_blank">
             <div class="item">
@@ -72,8 +81,9 @@ function appendPlugins(arrayFiltered) {
             </div>
           </a>
         </article>`.trim();
-    fragment.appendChild(template.content.firstElementChild);
-  });
+      fragment.appendChild(template.content.firstElementChild);
+    });
 
-  pluginsContainer.appendChild(fragment);
+    pluginsContainer.appendChild(fragment);
+  }
 }
