@@ -260,6 +260,10 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   flex-grow: 1;
   overflow: hidden;
 }
+#PluginHeader > main section.plugins-row img.imgForNotFoundPlugin {
+  width: 120px;
+  margin-bottom: 1.5rem;
+}
 #PluginHeader > main section.plugins-row {
   height: 100%;
   width: 50%;
