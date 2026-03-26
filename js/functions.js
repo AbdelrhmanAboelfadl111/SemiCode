@@ -52,7 +52,10 @@ function appendPlugins(arrayFiltered) {
   if (arrayFiltered.length == 0) {
     pluginsContainer.classList.add("notFound");
 
-    let alertElement = `<h4 class="alert alert-danger mb-0 text-center">Not Found</h4>`;
+    let alertElement = `<div class="BoxContainerForNotPluginFound d-flex justify-content-center align-items-center flex-column">
+      <img src="imgs/icons/plug-in.png" class="imgForNotFoundPlugin">
+      <h4 class="mb-0">Plugin Not Found</h4>
+    </div>`;
 
     pluginsContainer.innerHTML = `${alertElement}`;
   } else {
