@@ -94,6 +94,8 @@ const pluginsCategoryRow = document.querySelector("#sidebar__nav");
   pluginsCategoryRow.innerHTML = allItem + categoriesItems;
 })();
 
+let searched = false;
+
 // ============================================================
 // State
 const pluginsContainer = document.getElementById("pluginsContainer");
@@ -142,7 +144,12 @@ searchInput.addEventListener("input", () => {
     loading = false;
 
     pluginsScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
-    pluginsContainer.innerHTML = "";
+    if (results.length == 0) {
+      if (searched) return;
+      pluginsContainer.innerHTML = "";
+    } else {
+      pluginsContainer.innerHTML = "";
+    }
     appendPlugins(results);
   }, 300);
 });

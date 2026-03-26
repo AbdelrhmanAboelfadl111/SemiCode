@@ -50,20 +50,41 @@ function renderCategoryPlugins(that) {
 // Append Plugins
 function appendPlugins(arrayFiltered) {
   if (arrayFiltered.length == 0) {
+    if (searched) return;
+
     pluginsContainer.classList.add("notFound");
 
-    let alertElement = `<div class="BoxContainerForNotPluginFound d-flex justify-content-center align-items-center flex-column">
-      <img src="imgs/icons/plug-in.png" class="imgForNotFoundPlugin">
-      <h4 class="mb-0">Plugin Not Found</h4>
-    </div>`;
+    let alertElement = `<div class="BoxContainerForNotPluginFound justify-content-center align-items-center flex-column">
+        <img src="imgs/icons/plug-in.png" class="imgForNotFoundPlugin">
+        <h4 class="mb-0">Plugin Not Found</h4>
+      </div>`;
 
     pluginsContainer.innerHTML = `${alertElement}`;
+
+    searched = true;
+
+    setTimeout(() => {
+      let alert = document.querySelector(".BoxContainerForNotPluginFound");
+      alert.classList.add("active");
+      setTimeout(() => {
+        alert.classList.add("show");
+      }, 10);
+    }, 1);
   } else {
     const currentPlugins = arrayFiltered.slice(
       visibleCountStart,
       visibleCountEnd
     );
     pluginsContainer.classList.remove("notFound");
+    searched = false;
+
+    setTimeout(() => {
+      let alert = document.querySelector(".BoxContainerForNotPluginFound");
+      alert.classList.remove("show");
+      setTimeout(() => {
+        alert.classList.remove("active");
+      }, 500);
+    }, 1);
 
     const template = document.createElement("template");
     const fragment = document.createDocumentFragment();

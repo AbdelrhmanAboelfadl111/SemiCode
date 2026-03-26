@@ -413,6 +413,17 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   font-size: 14px;
   margin-bottom: 0px !important;
 }
+#PluginHeader > main section.plugins-row .cover .BoxContainerForNotPluginFound {
+  opacity: 0;
+  display: none;
+  transition-duration: 0.5s;
+}
+#PluginHeader > main section.plugins-row .cover .BoxContainerForNotPluginFound.active {
+  display: flex;
+}
+#PluginHeader > main section.plugins-row .cover .BoxContainerForNotPluginFound.show {
+  opacity: 1;
+}
 
 #PluginHeader .container-fluid .row-container {
   height: 100%;

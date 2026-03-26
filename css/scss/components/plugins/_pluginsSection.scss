@@ -15,7 +15,7 @@
         flex-grow: 1;
         overflow: hidden;
         section.plugins-row {
-            img.imgForNotFoundPlugin{
+            img.imgForNotFoundPlugin {
                 width: 120px;
                 margin-bottom: 1.5rem;
             }
@@ -159,6 +159,17 @@
                                 }
                             }
                         }
+                    }
+                }
+                .BoxContainerForNotPluginFound {
+                    opacity: 0;
+                    display: none;
+                    transition-duration: 0.5s;
+                    &.active {
+                        display: flex;
+                    }
+                    &.show {
+                        opacity: 1;
                     }
                 }
             }
