@@ -237,12 +237,12 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item a.nav-link {
   font-size: 14px;
 }
 nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item a.nav-link:hover {
-  color: #2e295e;
-  background: #f0effe;
+  color: #000000;
+  background: rgba(198, 198, 198, 0.631372549);
 }
 nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-link {
-  color: #2e295e;
-  background: #f0effe;
+  color: white;
+  background: rgba(0, 55, 255, 0.6823529412);
 }
 
 #PluginHeader {
@@ -323,7 +323,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   width: fit-content;
   margin: auto;
   border-radius: 10px;
-  height: 100%;
+  height: 300px;
 }
 #PluginHeader > main section.plugins-row .cover .container-fluid .row .column .item {
   position: relative;
@@ -671,7 +671,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   width: 100%;
   height: 58px;
   border-radius: 18px;
-  background: #bebaff;
+  background: rgba(0, 55, 255, 0.6588235294);
   z-index: 0;
   pointer-events: none;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), height 0.45s cubic-bezier(0.22, 1, 0.36, 1), width 0.45s cubic-bezier(0.22, 1, 0.36, 1), left 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -699,11 +699,11 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   background: rgba(0, 0, 0, 0.11);
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item.is-active {
-  color: #000;
+  color: #ffffff;
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item.is-active .nav-item__icon,
 #PluginHeader .container-fluid .row-container .sidebar .nav-item.is-active .nav-item__text {
-  color: #000;
+  color: #ffffff;
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item__icon {
   width: 28px;
@@ -715,6 +715,7 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   justify-content: center;
   color: #5b5b5b;
   transition: color 0.28s ease;
+  transform: scale(1.2);
 }
 #PluginHeader .container-fluid .row-container .sidebar .nav-item__icon i {
   width: 22px;

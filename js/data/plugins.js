@@ -7,7 +7,7 @@ const allPluginsCategory = [
       "Animated Icon Library",
       "Icon Animations",
     ],
-    img: "imgs/icons/apps_14434519.png",
+    img: "imgs/icons/bullet-point.gif",
   },
   {
     groupName: "Typography and text effects",

@@ -30,8 +30,8 @@
             $color-border: #e7e7e7;
             $color-item: #dee8f976;
             $color-item-hover: rgba(0, 0, 0, 0.11);
-            $color-active: #bebaff;
-            $color-active-text: #000;
+            $color-active: #0037ffa8;
+            $color-active-text: #ffffff;
             $color-shadow: rgba(0, 0, 0, 0.08);
 
             $ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -353,7 +353,7 @@
                         justify-content: center;
                         color: $color-text;
                         transition: color $transition-fast;
-
+                        transform: scale(1.2);
                         i {
                             width: $icon-size;
                             height: $icon-size;
