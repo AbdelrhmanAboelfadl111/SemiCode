@@ -4,6 +4,9 @@ window.addEventListener("DOMContentLoaded", function () {
   const sidebar = document.getElementById("sidebar");
   const toggleButton = document.getElementById("sidebarToggle");
 
+  // Add active-show class immediately when page loads
+  document.querySelector(".sidebar").classList.add("active-show");
+
   function getActivePill() {
     return document.getElementById("activePill");
   }
@@ -81,13 +84,13 @@ const pluginsCategoryRow = document.querySelector("#sidebar__nav");
     }" data-index="${index + 2}">
       <span class="nav-item__icon">
         <img src="${pluginCategory.img}" loading="lazy" alt="${
-        pluginCategory.groupName
-      }"
+          pluginCategory.groupName
+        }"
           onerror="this.src='imgs/puzzle_4020290.png'" class="img-fluid">
       </span>
       <span class="nav-item__text">${pluginCategory.groupName}</span>
     </article>
-  `
+  `,
     )
     .join("");
 
@@ -100,7 +103,7 @@ let searched = false;
 // State
 const pluginsContainer = document.getElementById("pluginsContainer");
 const pluginsScrollContainer = document.getElementById(
-  "pluginsScrollContainer"
+  "pluginsScrollContainer",
 );
 const searchInput = document.querySelector('input[type="search"]');
 const NUMBER_OF_PLUGINS_CARD = 6;
