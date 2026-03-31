@@ -149,6 +149,13 @@ nav.navbar .container .navbar-collapse {
   background-color: #fff;
   z-index: 100;
 }
+nav.navbar .container .navbar-collapse .item form .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 33px;
+}
 nav.navbar .container .navbar-collapse .item form {
   position: relative;
   display: flex;
@@ -438,6 +445,13 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   overflow: hidden;
   padding: 0;
   transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1), min-width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+#PluginHeader .container-fluid .row-container .sidebar.active-show {
+  transform: translateX(0) !important;
+  opacity: 1;
 }
 #PluginHeader .container-fluid .row-container .sidebar.is-closed {
   width: 100px;

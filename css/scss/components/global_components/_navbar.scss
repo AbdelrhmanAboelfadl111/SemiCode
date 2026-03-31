@@ -81,6 +81,13 @@ nav.navbar {
             z-index: 100;
             .item {
                 form {
+                    .search-icon{
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 33px;
+                    }
                     position: relative;
                     @include flex;
                     @include respond(350) {
