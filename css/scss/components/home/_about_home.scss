@@ -1,0 +1,59 @@
+@use "../../abstract/index" as *;
+section.about{
+    .column1{
+        .accordion{
+            .accordion-item{
+                .accordion-header{
+                    margin-block: 10px;
+                    button{
+                        font-size: 18px;
+                        padding: 20px 10px;
+                        
+                            box-shadow: none;
+                            background-color: transparent;
+                            color: black;
+                            outline: none;
+                            position: relative;
+                            &::before{
+                                @include createElement($w: 5px, $h: 100%);
+                                @include position($p: absolute, $b: 0, $l: 0);
+                                background-color: rgba(205, 205, 205, 0.74);
+                                transform: translateX(-100%);
+                                transition: all 0.3s ease-in-out;
+                            }
+                            &:not(.collapsed)::before{
+                                background-color:#2e295e;
+                            }
+                    }
+                }
+                .accordion-collapse{
+                    
+                    .accordion-body{
+                        margin-bottom: 10px;
+                        border-radius: 10px;
+                        background-color: #eeeeee;
+                        gap: 10px;
+                        a{
+                            
+                            img{
+                                width: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .column2{
+        .imgContainer{
+            img{
+                width: 500px;
+                
+                &.main{
+                    width: 200px;
+                    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.3));
+                }
+            }
+        }
+    }
+}

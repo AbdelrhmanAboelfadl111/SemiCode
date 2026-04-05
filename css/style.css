@@ -38,6 +38,40 @@
   animation: cardSlideUp 0.5s ease forwards;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes curtain-reveal {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+@keyframes dot-appear {
+  0%, 55% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
 body {
   background: #ada996;
   /* fallback for old browsers */
@@ -66,10 +100,52 @@ a {
   color: inherit;
 }
 
+.scroll-indicator {
+  position: absolute;
+  /* أو fixed لو عايزه يفضل ثابت */
+  bottom: 2.5rem;
+  left: 50.1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  transition: all 0.5s;
+}
+
+.scroll-indicator__line {
+  width: 1.5px;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, #011582);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-indicator__line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* ← غير الـ color دي لخلفية الـ hero بتاعتك */
+  background: var(--hero-bg, #ffffff);
+  animation: curtain-reveal 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.scroll-indicator__dot {
+  width: 5px;
+  height: 5px;
+  background: #2e295e;
+  border-radius: 50%;
+  animation: dot-appear 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 nav.navbar {
   background: #fff;
   border-bottom: 2px solid #2e295e;
   box-shadow: 0 2px 12px rgba(46, 41, 94, 0.06);
+  z-index: 3;
 }
 nav.navbar .container {
   display: flex;
@@ -249,7 +325,188 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item a.nav-link:hove
 }
 nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-link {
   color: white;
-  background: rgba(0, 55, 255, 0.6823529412);
+  background: #2e295e;
+}
+
+header.home#Home {
+  background-image: url("../imgs/bg_2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+header.home#Home .container {
+  padding: 20px;
+}
+header.home#Home .container .logoContainer {
+  gap: 5px;
+  margin-bottom: 5px;
+}
+header.home#Home .container .logoContainer img {
+  width: 200px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s 0.3s ease-in-out;
+  filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.3));
+}
+@media (max-width: 1300px) {
+  header.home#Home .container .logoContainer img {
+    width: 110px;
+  }
+}
+@media (min-width: 371px) and (max-width: 1300px) {
+  header.home#Home .container .logoContainer img {
+    width: 130px;
+  }
+}
+@media (min-width: 576px) and (max-width: 1300px) {
+  header.home#Home .container .logoContainer img {
+    width: 160px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1300px) {
+  header.home#Home .container .logoContainer img {
+    width: 190px;
+  }
+}
+header.home#Home .container .logoContainer img.show {
+  transform: translateY(0px);
+  opacity: 1;
+}
+header.home#Home .container .logoContainer h1 {
+  font-size: 45px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s 0.6s ease-in-out;
+}
+header.home#Home .container .logoContainer h1.show {
+  transform: translateY(0px);
+  opacity: 1;
+}
+@media (max-width: 1300px) {
+  header.home#Home .container .logoContainer h1 {
+    font-size: 30px;
+  }
+}
+@media (min-width: 576px) and (max-width: 1300px) {
+  header.home#Home .container .logoContainer h1 {
+    font-size: 37px;
+  }
+}
+header.home#Home .container .logoContainer h1 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #2e295e;
+}
+header.home#Home .container .briefContainer {
+  margin-bottom: 5px;
+}
+header.home#Home .container .briefContainer p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.909);
+  line-height: 30px;
+  font-weight: 400;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s 0.9s ease-in-out;
+}
+header.home#Home .container .briefContainer p.show {
+  transform: translateY(0px);
+  opacity: 1;
+}
+@media (max-width: 1300px) {
+  header.home#Home .container .briefContainer p {
+    font-size: 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1300px) {
+  header.home#Home .container .briefContainer p {
+    font-size: 18px;
+  }
+}
+header.home#Home .container .buttonsContainer {
+  gap: 20px;
+}
+header.home#Home .container .buttonsContainer a {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s 1.2s ease-in-out;
+}
+header.home#Home .container .buttonsContainer a.show {
+  transform: translateY(0px);
+  opacity: 1;
+}
+header.home#Home .container .buttonsContainer a:first-child button {
+  background-color: #2e295e;
+  color: white;
+}
+header.home#Home .container .buttonsContainer a button {
+  background-color: transparent;
+  padding: 8px 20px;
+  color: black;
+  border: 2px solid #2e295e;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 1300px) {
+  header.home#Home .container .buttonsContainer a button {
+    font-size: 15px;
+    padding: 5px 15px;
+  }
+}
+header.home#Home .container .buttonsContainer a:hover:not(:first-child) button {
+  transform: scale(0.98);
+}
+header.home#Home .container .buttonsContainer a:hover button {
+  background-color: #2e295e;
+  color: white;
+}
+
+section.about .column1 .accordion .accordion-item .accordion-header {
+  margin-block: 10px;
+}
+section.about .column1 .accordion .accordion-item .accordion-header button {
+  font-size: 18px;
+  padding: 20px 10px;
+  box-shadow: none;
+  background-color: transparent;
+  color: black;
+  outline: none;
+  position: relative;
+}
+section.about .column1 .accordion .accordion-item .accordion-header button::before {
+  content: "";
+  width: 5px;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: initial;
+  right: initial;
+  bottom: 0;
+  left: 0;
+  z-index: initial;
+  background-color: rgba(205, 205, 205, 0.74);
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+}
+section.about .column1 .accordion .accordion-item .accordion-header button:not(.collapsed)::before {
+  background-color: #2e295e;
+}
+section.about .column1 .accordion .accordion-item .accordion-collapse .accordion-body {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #eeeeee;
+  gap: 10px;
+}
+section.about .column1 .accordion .accordion-item .accordion-collapse .accordion-body a img {
+  width: 40px;
+}
+section.about .column2 .imgContainer img {
+  width: 500px;
+}
+section.about .column2 .imgContainer img.main {
+  width: 200px;
+  filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.3));
 }
 
 #PluginHeader {

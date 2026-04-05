@@ -29,3 +29,44 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+.scroll-indicator {
+    position: absolute;
+    /* أو fixed لو عايزه يفضل ثابت */
+    bottom: 2.5rem;
+    left: 50.1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+    transition: all 0.5s;
+}
+
+.scroll-indicator__line {
+    width: 1.5px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, #011582);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-indicator__line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* ← غير الـ color دي لخلفية الـ hero بتاعتك */
+    background: var(--hero-bg, #ffffff);
+    animation: curtain-reveal 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.scroll-indicator__dot {
+    width: 5px;
+    height: 5px;
+    background: #2e295e;
+    border-radius: 50%;
+    animation: dot-appear 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
