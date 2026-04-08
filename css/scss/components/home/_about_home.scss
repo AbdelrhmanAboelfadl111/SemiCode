@@ -1,57 +1,115 @@
 @use "../../abstract/index" as *;
-section.about{
-    .column1{
-        .accordion{
-            .accordion-item{
-                .accordion-header{
-                    margin-block: 10px;
-                    button{
-                        font-size: 18px;
-                        padding: 20px 10px;
-                        
-                            box-shadow: none;
-                            background-color: transparent;
-                            color: black;
-                            outline: none;
-                            position: relative;
-                            &::before{
-                                @include createElement($w: 5px, $h: 100%);
-                                @include position($p: absolute, $b: 0, $l: 0);
-                                background-color: rgba(205, 205, 205, 0.74);
-                                transform: translateX(-100%);
-                                transition: all 0.3s ease-in-out;
-                            }
-                            &:not(.collapsed)::before{
-                                background-color:#2e295e;
-                            }
-                    }
-                }
-                .accordion-collapse{
-                    
-                    .accordion-body{
-                        margin-bottom: 10px;
-                        border-radius: 10px;
-                        background-color: #eeeeee;
-                        gap: 10px;
-                        a{
-                            
-                            img{
-                                width: 40px;
+
+body {
+    height: 5000px;
+}
+#About {
+    .base {
+        .row-1 {
+            > .part {
+                &.part-left {
+                    @include flex;
+                    .item {
+                        .title-section {
+                        }
+                        .text-section {
+                        }
+                        .row-2 {
+                            .box {
+                                > .item {
+                                    .part {
+                                        &.part-top {
+                                            padding: 20px 20px 21px;
+                                            border: 1px solid #000;
+                                            border-radius: 5px;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            cursor: pointer;
+                                            position: relative;
+                                            transition-duration: 1s;
+
+                                            .question {
+                                                color: var(--text-primary);
+                                                text-transform: capitalize;
+                                                letter-spacing: 0.5px;
+                                                text-shadow: -0px 0px 10px #2a2081;
+                                            }
+                                            .icon {
+                                                .arrow {
+                                                    transition-duration: 0.4s;
+                                                    transition-delay: 0.2s;
+                                                    transform: rotate(0deg);
+                                                }
+                                            }
+                                        }
+                                        &.part-bottom {
+                                            position: relative;
+                                            max-height: 0;
+                                            overflow: hidden;
+                                            transform: translateY(-5px);
+                                            transition: max-height 0.4s 0s linear;
+
+                                            .item {
+                                                background-color: #e9e7e7;
+                                                border-top: 0px;
+                                                border-left: 1px solid #000;
+                                                border-right: 1px solid #000;
+                                                border-bottom: 1px solid #000;
+                                                border-radius: 0px 0px 10px 10px;
+                                                padding: 20px;
+
+                                                height: max-content;
+                                                p {
+                                                }
+
+                                                .row {
+                                                    .counter {
+                                                        h6 {
+                                                        }
+
+                                                        ul {
+                                                            li {
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        .part.part-top {
+                                            .icon {
+                                                .arrow {
+                                                    transform: rotate(90deg);
+                                                    transition-delay: 0s;
+                                                }
+                                            }
+                                        }
+                                        .part.part-bottom {
+                                            max-height: 400px;
+                                            transition: max-height 0.4s 0.3s linear;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-        }
-    }
-    .column2{
-        .imgContainer{
-            img{
-                width: 500px;
-                
-                &.main{
-                    width: 200px;
-                    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.3));
+                &.part-right {
+                    @include flex;
+                    .item {
+                        @include flex;
+                        width: 55%;
+
+                        img {
+                            transition: opacity 0.5s ease;
+
+                            &.fade-out {
+                                opacity: 0;
+                            }
+                        }
+                    }
                 }
             }
         }
