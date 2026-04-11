@@ -1,3 +1,16 @@
+function changeActives(that) {
+  let parentAllChildren = that.closest(".changeActives"),
+    childActive = parentAllChildren.querySelector(".active"),
+    currentChild = that;
+
+  if (that.classList.contains("active")) {
+    return 0;
+  } else {
+    childActive.classList.remove("active");
+    currentChild.classList.add("active");
+  }
+}
+
 // ! Sidebar Activate Functions
 function getActivePill() {
   return document.getElementById("activePill");

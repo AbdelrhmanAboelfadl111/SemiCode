@@ -72,13 +72,30 @@
     transform: scale(0.4);
   }
 }
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideUpItem {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 body {
   background: #ada996;
-  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h1,
@@ -87,7 +104,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Rubik" !important;
+  font-family: "Agency FB Bold" !important;
+  letter-spacing: 3px;
 }
 
 a,
@@ -102,7 +120,6 @@ a {
 
 .scroll-indicator {
   position: absolute;
-  /* أو fixed لو عايزه يفضل ثابت */
   bottom: 2.5rem;
   left: 50.1%;
   display: flex;
@@ -115,7 +132,7 @@ a {
 
 .scroll-indicator__line {
   width: 1.5px;
-  height: 56px;
+  height: 76px;
   background: linear-gradient(to bottom, transparent, #011582);
   position: relative;
   overflow: hidden;
@@ -128,14 +145,13 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  /* ← غير الـ color دي لخلفية الـ hero بتاعتك */
   background: var(--hero-bg, #ffffff);
   animation: curtain-reveal 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .scroll-indicator__dot {
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
   background: #2e295e;
   border-radius: 50%;
   animation: dot-appear 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -145,7 +161,7 @@ nav.navbar {
   background: #fff;
   border-bottom: 2px solid #2e295e;
   box-shadow: 0 2px 12px rgba(46, 41, 94, 0.06);
-  z-index: 3;
+  z-index: 10000;
 }
 nav.navbar .container {
   display: flex;
@@ -329,12 +345,18 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
 }
 
 header.home#Home {
-  background-image: url("../imgs/bg_2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
+}
+header.home#Home #particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 header.home#Home .container {
+  position: relative;
+  z-index: 10;
   padding: 20px;
 }
 header.home#Home .container .logoContainer {
@@ -342,7 +364,7 @@ header.home#Home .container .logoContainer {
   margin-bottom: 5px;
 }
 header.home#Home .container .logoContainer img {
-  width: 200px;
+  width: 225px;
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.4s 0.3s ease-in-out;
@@ -482,6 +504,7 @@ body {
   gap: 10px;
 }
 #About .base .row-1 > .part.part-left .item .titleContainer .title-section {
+  color: #2e295e;
   font-size: 40px;
   font-weight: 500;
   margin-bottom: 0;
@@ -491,6 +514,9 @@ body {
 }
 #About .base .row-1 > .part.part-left .item .text-section {
   color: rgb(123, 123, 123);
+}
+#About .base .row-1 > .part.part-left .item p {
+  text-transform: capitalize;
 }
 #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-top {
   padding: 20px 20px 21px;
@@ -515,7 +541,7 @@ body {
 }
 #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-top .icon .arrow {
   color: #acacac;
-  transition-duration: 0.4s;
+  transition-duration: 0.1s;
   transform: rotate(0deg);
 }
 #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom {
@@ -523,13 +549,122 @@ body {
   max-height: 0;
   overflow: hidden;
   transform: translateY(-5px);
-  transition: max-height 0.4s linear;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom ol {
+  margin-bottom: 0 !important;
 }
 #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item {
-  background-color: #e9e7e7;
+  background-color: #ececec;
   margin-block: 1.5rem;
   padding: 20px;
   height: max-content;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item p {
+  margin-bottom: 0 !important;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses {
+  display: flex;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6 {
+  position: relative;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 22px;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+  border: 1px solid #2e295e;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  color: #2e295e;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6 span {
+  position: relative;
+  z-index: 5;
+  transition-duration: 0.3s;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6::before, #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6::after {
+  content: "";
+  width: 50%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: initial;
+  bottom: initial;
+  left: initial;
+  z-index: initial;
+  background-color: #2e295e;
+  transition-duration: 0.3s;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6::before {
+  left: -50%;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6::after {
+  right: -50%;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6.active span, #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6:hover span {
+  color: #fff;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6.active::before, #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6:hover::before {
+  left: 0%;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6.active::after, #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .typeOfCourses h6:hover::after {
+  right: 0%;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 0;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  padding: 10px 20px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  border-radius: 50px;
+  border: 2px solid #685ae6;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  opacity: 0;
+  animation: slideUpItem 0.35s ease forwards;
+  animation-delay: calc(var(--i, 0) * 0.05s);
+}
+@media (max-width: 1300px) {
+  #About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul li {
+    gap: 6px;
+    padding: 8px 16px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+  }
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul li:hover {
+  background-color: #685ae6;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul li:hover .name-language {
+  color: #fff;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul li .img-language {
+  border-radius: 10px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul li .img-language img {
+  width: 90%;
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item .part.part-bottom .item .row .counter ul li .name-language {
+  font-size: 16px;
+  letter-spacing: 0.9px;
+  font-weight: 700;
+  color: #685ae6;
 }
 #About .base .row-1 > .part.part-left .item .row-2 .box > .item.active .part.part-top {
   border-color: #2e295e;
@@ -542,8 +677,27 @@ body {
   transform: rotate(90deg);
 }
 #About .base .row-1 > .part.part-left .item .row-2 .box > .item.active .part.part-bottom {
-  max-height: 400px;
-  transition: max-height 0.4s 0.3s linear;
+  max-height: 600px;
+}
+@media (max-width: 1300px) {
+  #About .base .row-1 > .part.part-left .item .row-2 .box > .item.active .part.part-bottom {
+    max-height: 750px;
+  }
+}
+@media (min-width: 576px) and (max-width: 1300px) {
+  #About .base .row-1 > .part.part-left .item .row-2 .box > .item.active .part.part-bottom {
+    max-height: 600px;
+  }
+}
+#About .base .row-1 > .part.part-left .item .row-2 .box > .item.active .part.part-bottom {
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#About .base .row-1 > .part.part-left .SemiCode {
+  font-weight: 700;
+  font-size: 24px;
+  color: #2e295e;
+  font-family: "Agency FB Bold";
+  letter-spacing: 1px;
 }
 #About .base .row-1 > .part.part-right {
   display: flex;
@@ -557,13 +711,20 @@ body {
   align-items: center;
   flex-direction: row;
   width: 55%;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(0);
 }
 #About .base .row-1 > .part.part-right .item img {
-  transition: opacity 1s ease-in-out;
-  width: 240px;
+  width: 100%;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(0);
 }
 #About .base .row-1 > .part.part-right .item img.fade-out {
   opacity: 0;
+  transform: translateY(15px);
+}
+#About .base .row-1 > .part.part-right .item img.fade-in {
+  animation: slideUp 0.35s ease forwards;
 }
 
 #PluginHeader {
@@ -622,9 +783,11 @@ body {
   height: 100%;
 }
 #PluginHeader > main section.plugins-row .cover .container-fluid .row {
-  min-height: 100%;
   height: max-content;
   flex: 1;
+}
+#PluginHeader > main section.plugins-row .cover .container-fluid .row.notFound {
+  min-height: 100%;
 }
 #PluginHeader > main section.plugins-row .cover .container-fluid .row > h4 {
   height: max-content;

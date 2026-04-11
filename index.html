@@ -54,13 +54,15 @@
     </div>
 
     <header class="home vh-100 d-flex justify-content-center align-items-center" id="Home">
+        <div id="particles-js"></div>
         <div class="container d-flex flex-column justify-content-center align-items-center text-center">
             <div class="logoContainer d-flex flex-column justify-content-center align-items-center">
                 <img class="" src="imgs/logoSemiCode.png" alt="semiCode">
                 <h1>SemiCode</h1>
             </div>
             <div class="briefContainer">
-                <p>SemiCode is a Platform That Teaches Programming Through <br> Real projects, And Practical Experience.
+                <p>SemiCode is a Platform That Teaches Programming Through <br> Real projects, And Practical
+                    Experience.
                 </p>
             </div>
             <div class="buttonsContainer d-flex justify-content-center align-items-center">
@@ -76,18 +78,22 @@
                 <div class="col-lg-7 part part-left">
                     <div class="item">
                         <div class="titleContainer">
-                            <img src="imgs/icons/about-us.png" alt="about us icon" >
+                            <img src="imgs/icons/about-us.png" alt="about us icon">
                             <h2 class="title-section">About US</h2>
                         </div>
-                        <p class="text-section">
-                            SemiCode is a platform that helps developers learn and improve their skills in a simple and practical way. It
-                            provides clear explanations, real-world examples, and modern ideas that make complex concepts easier to understand and
+                        <p class="text-section mb-4">
+                            <span class="SemiCode">
+                                SemiCode
+                            </span> is a platform that helps developers learn and improve their skills in a simple and
+                            practical way. It
+                            provides clear explanations, real-world examples, and modern ideas that make complex
+                            concepts easier to understand and
                             apply in real projects.
                         </p>
                         <div class="row row-2">
                             <div class="box mb-3 col-12">
                                 <div class="item">
-                                    <div class="part part-top" data-img-src="imgs\About.png">
+                                    <div class="part part-top" data-img-src="imgs\about\Company-amico.svg">
                                         <h4 class="question mb-0">Who US ?</h4>
                                         <div class="icon">
                                             <div class="arrow">
@@ -98,9 +104,13 @@
                                     <div class="part part-bottom">
                                         <div class="item">
                                             <p class="mb-0">
-                                                SemiCode is a platform that helps developers learn and improve their skills in a simple and practical way. It
-                                                provides clear explanations, real-world examples, and modern ideas that make complex concepts easier to understand and
-                                                apply in real projects.
+                                                <span class="SemiCode">
+                                                    SemiCode
+                                                </span> is a developer-focused platform built to make learning web
+                                                development
+                                                straightforward and practical. We break down complex topics into clear,
+                                                step-by-step content so you can build real projects with confidence.
+                                                Our goal is simple: help developers grow faster with better resources.
                                             </p>
                                         </div>
                                     </div>
@@ -108,7 +118,7 @@
                             </div>
                             <div class="box mb-3 col-12">
                                 <div class="item">
-                                    <div class="part part-top" data-img-src="imgs\contact.jpg">
+                                    <div class="part part-top" data-img-src="imgs\about\Seminar-amico.svg">
                                         <h4 class="question mb-0">What the Courses ?</h4>
                                         <div class="icon">
                                             <div class="arrow">
@@ -119,31 +129,24 @@
                                     <div class="part part-bottom">
                                         <div class="item">
                                             <p>
-                                                Lorem ipsum dolor sit amet.
+                                                We offer a range of courses built around modern web technologies.
+                                                Each course is designed to take you from the basics to a real working
+                                                project.
                                             </p>
                                             <div class="row">
-                                                <div class="counter col-4">
-                                                    <h6>shdadh : </h6>
-                                                    <ul type="none">
-                                                        <li>1 - askdjhsd</li>
-                                                        <li>2 - amddnd</li>
-                                                        <li>3 - skdfsjk</li>
-                                                    </ul>
+                                                <div class="typeOfCourses changeActives my-3 col-12">
+                                                    <h6 class="me-2 active"
+                                                        onclick="changeCoursesContent('Frontend', this);changeActives(this)">
+                                                        <span>Frontend</span>
+                                                    </h6>
+                                                    <h6
+                                                        onclick="changeCoursesContent('Backend', this);changeActives(this)">
+                                                        <span>Backend</span>
+                                                    </h6>
                                                 </div>
-                                                <div class="counter col-4">
-                                                    <h6>shdadh : </h6>
-                                                    <ul type="none">
-                                                        <li>1 - askdjhsd</li>
-                                                        <li>2 - amddnd</li>
-                                                        <li>3 - skdfsjk</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="counter col-4">
-                                                    <h6>shdadh : </h6>
-                                                    <ul type="none">
-                                                        <li>1 - askdjhsd</li>
-                                                        <li>2 - amddnd</li>
-                                                        <li>3 - skdfsjk</li>
+                                                <div class="counter col-12">
+                                                    <ul type="none" id="dataInter">
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -153,7 +156,7 @@
                             </div>
                             <div class="box  col-12">
                                 <div class="item">
-                                    <div class="part part-top" data-img-src="imgs\courses.jpg">
+                                    <div class="part part-top" data-img-src="imgs\about\Partnership-bro.svg">
                                         <h4 class="question mb-0">What the Countries Visited ?</h4>
                                         <div class="icon">
                                             <div class="arrow">
@@ -164,9 +167,12 @@
                                     <div class="part part-bottom">
                                         <div class="item">
                                             <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eligendi,
-                                                porro quia reiciendis officiis, quos alias architecto provident saepe
-                                                ipsam earum, officia repellendus tempora possimus?
+                                                <span class="SemiCode">
+                                                    SemiCode
+                                                </span> has reached developers across multiple countries including
+                                                Egypt, Saudi Arabia, UAE, kauwit, and Oman.
+                                                Our content is built for Arabic-speaking developers worldwide,
+                                                with a focus on practical skills that apply anywhere in the world.
                                             </p>
                                         </div>
                                     </div>
@@ -176,16 +182,19 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5 part part-right">
+                <div class="col-lg-5 part part-right d-none d-lg-flex">
                     <div class="item">
-                        <img src="imgs/logoSemiCode.png" data-default-src="imgs/logoSemiCode.png" loading="lazy" alt=""
-                            class="img-fluid">
+                        <img src="imgs/logoSemiCode.png" data-default-src="imgs/logoSemiCode.png"
+                            loading="lazy" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
+    <script src="js/plugins/particles.min.js"></script>
+    <script src="js/plugins/app.js"></script>
 
     <script src="js/plugins/bootstrap.bundle.min.js"></script>
     <script src="js/plugins/using_Plugins.js"></script>

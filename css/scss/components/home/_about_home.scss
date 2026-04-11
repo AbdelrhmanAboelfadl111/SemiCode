@@ -3,6 +3,7 @@
 body {
     height: 5000px;
 }
+
 #About {
     .base {
         .row-1 {
@@ -10,12 +11,13 @@ body {
                 &.part-left {
                     @include flex;
                     .item {
-                        .titleContainer{
+                        .titleContainer {
                             margin-bottom: 0.5rem;
                             @include flex;
                             justify-content: flex-start;
                             gap: 10px;
                             .title-section {
+                                color: #2e295e;
                                 font-size: 40px;
                                 font-weight: 500;
                                 margin-bottom: 0;
@@ -27,13 +29,16 @@ body {
                         .text-section {
                             color: rgb(123, 123, 123);
                         }
+                        p{
+                            text-transform: capitalize;
+                        }
                         .row-2 {
                             .box {
                                 > .item {
                                     .part {
                                         &.part-top {
                                             padding: 20px 20px 21px;
-                                            
+
                                             border-left: 8px solid #acacac;
                                             display: flex;
                                             justify-content: space-between;
@@ -41,8 +46,8 @@ body {
                                             cursor: pointer;
                                             position: relative;
                                             transition-duration: 0.4s;
-                                            h4{
-                                                color:#acacac!important;
+                                            h4 {
+                                                color: #acacac !important;
                                                 font-weight: 400;
                                                 font-size: 22px;
                                                 transition-duration: 0.4s;
@@ -55,10 +60,9 @@ body {
                                             .icon {
                                                 .arrow {
                                                     color: #acacac;
-                                                    transition-duration: 0.4s;
-                                                    
+                                                    transition-duration: 0.1s;
+
                                                     transform: rotate(0deg);
-                                                    
                                                 }
                                             }
                                         }
@@ -67,22 +71,122 @@ body {
                                             max-height: 0;
                                             overflow: hidden;
                                             transform: translateY(-5px);
-                                            transition: max-height 0.4s  linear;
+                                            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+                                            ol {
+                                                margin-bottom: 0 !important;
+                                            }
+
                                             .item {
-                                                background-color: #e9e7e7;
+                                                background-color: #ececec;
                                                 margin-block: 1.5rem;
                                                 padding: 20px;
                                                 height: max-content;
                                                 p {
+                                                    margin-bottom: 0 !important;
                                                 }
 
                                                 .row {
-                                                    .counter {
+                                                    .typeOfCourses {
+                                                        display: flex;
                                                         h6 {
-                                                        }
+                                                            $color-div: #2e295e;
 
+                                                            position: relative;
+                                                            padding: 8px 24px;
+                                                            border-radius: 50px;
+                                                            font-size: 22px;
+                                                            margin-bottom: 0 !important;
+                                                            cursor: pointer;
+                                                            border: 1px solid $color-div;
+                                                            transition-duration: 0.3s;
+                                                            overflow: hidden;
+                                                            color: #2e295e;
+                                                            span {
+                                                                position: relative;
+                                                                z-index: 5;
+                                                                transition-duration: 0.3s;
+                                                            }
+                                                            &::before,
+                                                            &::after {
+                                                                @include createElement($h: 100%, $w: 50%);
+                                                                @include position($t: 0);
+                                                                background-color: #2e295e;
+                                                                transition-duration: 0.3s;
+                                                            }
+                                                            &::before {
+                                                                left: -50%;
+                                                            }
+                                                            &::after {
+                                                                right: -50%;
+                                                            }
+                                                            &.active,
+                                                            &:hover {
+                                                                span {
+                                                                    color: #fff;
+                                                                }
+                                                                &::before {
+                                                                    left: 0%;
+                                                                }
+                                                                &::after {
+                                                                    right: 0%;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    .counter {
                                                         ul {
+                                                            display: flex;
+                                                            flex-wrap: wrap;
+                                                            padding: 0;
+                                                            margin-bottom: 0;
                                                             li {
+                                                                $color-bg-and-text: #685ae6;
+
+                                                                @include flex;
+                                                                gap: 8px;
+                                                                padding: 10px 20px;
+                                                                margin-bottom: 8px;
+                                                                margin-right: 8px;
+                                                                border-radius: 50px;
+                                                                border: 2px solid $color-bg-and-text;
+                                                                transition-duration: 0.3s;
+                                                                cursor: pointer;
+                                                                opacity: 0;
+                                                                animation: slideUpItem 0.35s ease forwards;
+                                                                animation-delay: calc(var(--i, 0) * 0.05s);
+                                                                
+                                                                
+                                                                @include respond(350){
+                                                                    gap: 6px;
+                                                                    padding: 8px 16px;
+                                                                    margin-bottom: 6px;
+                                                                    margin-right: 6px;
+
+                                                                }
+
+
+                                                                &:hover {
+                                                                    background-color: $color-bg-and-text;
+                                                                    .name-language {
+                                                                        color: #fff;
+                                                                    }
+                                                                }
+
+                                                                .img-language {
+                                                                    border-radius: 10px;
+                                                                    width: 30px;
+                                                                    @include flex;
+                                                                    img {
+                                                                        width: 90%;
+                                                                    }
+                                                                }
+                                                                .name-language {
+                                                                    font-size: 16px;
+                                                                    letter-spacing: 0.9px;
+                                                                    font-weight: 700;
+                                                                    color: $color-bg-and-text;
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -93,25 +197,38 @@ body {
                                     &.active {
                                         .part.part-top {
                                             border-color: #2e295e;
-                                            h4{
-                                                color: #2e295e!important;
+                                            h4 {
+                                                color: #2e295e !important;
                                             }
                                             .icon {
                                                 .arrow {
                                                     color: #2e295e;
                                                     transform: rotate(90deg);
-                                                    
                                                 }
                                             }
                                         }
                                         .part.part-bottom {
-                                            max-height: 400px;
-                                            transition: max-height 0.4s 0.3s linear;
+                                            max-height: 600px;
+                                            @include respond(350) {
+                                                max-height: 750px;
+                                            }
+                                            @include respond(650) {
+                                                max-height: 600px;
+                                            }
+
+                                            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
                                         }
                                     }
                                 }
                             }
                         }
+                    }
+                    .SemiCode {
+                        font-weight: 700;
+                        font-size: 24px;
+                        color: #2e295e;
+                        font-family: "Agency FB Bold";
+                        letter-spacing: 1px;
                     }
                 }
                 &.part-right {
@@ -120,11 +237,26 @@ body {
                         @include flex;
                         width: 55%;
 
+                        transition:
+                            opacity 0.35s ease,
+                            transform 0.35s ease;
+                        transform: translateY(0);
+
                         img {
-                            transition: opacity 1s ease-in-out;
-                            width: 240px;
+                            width: 100%;
+
+                            transition:
+                                opacity 0.35s ease,
+                                transform 0.35s ease;
+                            transform: translateY(0);
+
                             &.fade-out {
                                 opacity: 0;
+                                transform: translateY(15px);
+                            }
+
+                            &.fade-in {
+                                animation: slideUp 0.35s ease forwards;
                             }
                         }
                     }

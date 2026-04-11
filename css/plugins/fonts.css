@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Agency FB Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Agency FB Bold'), url('fonts-styles/AGENCYB.woff') format('woff');
+}
+
 /* latin */
 @font-face {
     font-family: 'Asul';
