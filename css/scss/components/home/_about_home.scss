@@ -5,6 +5,7 @@ body {
 }
 
 #About {
+    position: relative;
     .base {
         .row-1 {
             > .part {
@@ -29,7 +30,7 @@ body {
                         .text-section {
                             color: rgb(123, 123, 123);
                         }
-                        p{
+                        p {
                             text-transform: capitalize;
                         }
                         .row-2 {
@@ -55,7 +56,9 @@ body {
                                             .question {
                                                 color: var(--text-primary);
                                                 text-transform: capitalize;
-                                                letter-spacing: 0.5px;
+                                                letter-spacing: 4px;
+                                                font-size: 24px;
+                                                font-weight: 800;
                                             }
                                             .icon {
                                                 .arrow {
@@ -155,16 +158,13 @@ body {
                                                                 opacity: 0;
                                                                 animation: slideUpItem 0.35s ease forwards;
                                                                 animation-delay: calc(var(--i, 0) * 0.05s);
-                                                                
-                                                                
-                                                                @include respond(350){
+
+                                                                @include respond(350) {
                                                                     gap: 6px;
                                                                     padding: 8px 16px;
                                                                     margin-bottom: 6px;
                                                                     margin-right: 6px;
-
                                                                 }
-
 
                                                                 &:hover {
                                                                     background-color: $color-bg-and-text;
@@ -197,7 +197,7 @@ body {
                                     &.active {
                                         .part.part-top {
                                             border-color: #2e295e;
-                                            h4 {
+                                            .question {
                                                 color: #2e295e !important;
                                             }
                                             .icon {
@@ -263,5 +263,43 @@ body {
                 }
             }
         }
+    }
+    .animation-img-1 {
+        position: absolute;
+        top: 35px;
+        right: 35px;
+        svg {
+            width: 100px;
+            overflow: auto !important;
+            opacity: 0.5;
+            animation-name: move-about;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-direction: normal;
+        }
+    }
+    .animation-img-2 {
+        position: absolute;
+        bottom: 35px;
+        right: 35px;
+        svg {
+            width: 100px;
+            overflow: auto !important;
+            opacity: 0.5;
+            animation-name: move-about;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+    }
+}
+
+@keyframes move-about {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
