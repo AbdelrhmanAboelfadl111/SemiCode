@@ -15,24 +15,18 @@ section#FeedBack{
                     img{
                         width: 60px;
                     }
-                    ul{
-                        margin: 0;
-                        padding: 0;
-                        display: flex;
-                        list-style: none;
-                        gap: 20px;
-                        a{
-                            &:hover{
-                                img{
-                                    transform: scale(0.9);
-                                }
-                            }
-                            li{
-                                img{
-                                    width: 40px;
-                                    transition: all 0.3s ease-in-out;
-                                }
-                            }
+                    button.support{
+                        background: #2E295E;
+                        color: #fff;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        transition: all 0.3s ease-in-out;
+
+                        &:hover {
+                            background: #1b1a3a;
                         }
                     }
                 }

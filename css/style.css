@@ -170,6 +170,51 @@ a {
   animation: dot-appear 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+.support {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+@media (max-width: 1300px) {
+  .support {
+    bottom: 10px;
+    right: 20px;
+  }
+  .support::before {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .support img {
+    width: 45px !important;
+  }
+}
+.support::before {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 3px solid transparent;
+  border-top-color: #011582;
+  border-right-color: #011582;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  z-index: -1;
+  backdrop-filter: blur(4px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
+}
+.support img {
+  width: 55px;
+  height: 70px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
 nav.navbar {
   background: #fff;
   border-bottom: 2px solid #2e295e;
@@ -799,19 +844,18 @@ section#FeedBack .container .row .column1 .item h3 {
 section#FeedBack .container .row .column1 .item img {
   width: 60px;
 }
-section#FeedBack .container .row .column1 .item ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-section#FeedBack .container .row .column1 .item ul a:hover img {
-  transform: scale(0.9);
-}
-section#FeedBack .container .row .column1 .item ul a li img {
-  width: 40px;
+section#FeedBack .container .row .column1 .item button.support {
+  background: #2E295E;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+section#FeedBack .container .row .column1 .item button.support:hover {
+  background: #1b1a3a;
 }
 section#FeedBack .container .row .column2 .item {
   height: 100%;
