@@ -6,6 +6,10 @@
 
 @use "components/home/about_home" as *;
 
+@use "components/home/feedBack_home" as *;
+
+@use "components/home/footer_home" as *;
+
 @use "components/plugins/pluginsSection" as *;
 
 @use "components/plugins/sideNavbar" as *;

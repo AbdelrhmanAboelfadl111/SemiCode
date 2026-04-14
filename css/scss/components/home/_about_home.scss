@@ -1,8 +1,5 @@
 @use "../../abstract/index" as *;
 
-body {
-    height: 5000px;
-}
 
 #About {
     position: relative;
@@ -52,6 +49,12 @@ body {
                                                 font-weight: 400;
                                                 font-size: 22px;
                                                 transition-duration: 0.4s;
+                                                @include respond(350) {
+                                                    font-size: 18px!important;
+                                                }
+                                                @include respond(450) {
+                                                    font-size: 20px!important;
+                                                }
                                             }
                                             .question {
                                                 color: var(--text-primary);
@@ -235,7 +238,7 @@ body {
                     @include flex;
                     .item {
                         @include flex;
-                        width: 55%;
+                        width: 100%;
 
                         transition:
                             opacity 0.35s ease,
@@ -243,7 +246,7 @@ body {
                         transform: translateY(0);
 
                         img {
-                            width: 100%;
+                            width: 80%;
 
                             transition:
                                 opacity 0.35s ease,
@@ -264,33 +267,16 @@ body {
             }
         }
     }
-    .animation-img-1 {
-        position: absolute;
-        top: 35px;
-        right: 35px;
-        svg {
-            width: 100px;
-            overflow: auto !important;
-            opacity: 0.5;
-            animation-name: move-about;
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-            animation-direction: normal;
-        }
-    }
+
     .animation-img-2 {
         position: absolute;
-        bottom: 35px;
-        right: 35px;
-        svg {
-            width: 100px;
-            overflow: auto !important;
-            opacity: 0.5;
-            animation-name: move-about;
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
+        bottom: 30px;
+        right: 30px;
+        @include respond(350) {
+            display: none;
+        }
+        img{
+            width: 50px;
         }
     }
 }
