@@ -1,116 +1,3 @@
-const dataCourses = [
-  {
-    nameLanguage: "HTML5",
-    imgLanguage: "html-svgrepo-com.svg",
-    typeCourse: ["Frontend", "Backend"],
-  },
-  {
-    nameLanguage: "CSS3",
-    imgLanguage: "css-3-svgrepo-com.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "Bootstrap 5",
-    imgLanguage: "bootstrap-svgrepo-com.svg",
-    typeCourse: ["Frontend", "Backend"],
-  },
-  {
-    nameLanguage: "JS & ES6",
-    imgLanguage: "js-official-svgrepo-com.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "Regex",
-    imgLanguage: "",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "jQuery",
-    imgLanguage: "jquery-svgrepo-com.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "SASS",
-    imgLanguage: "sass-svgrepo-com.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "API",
-    imgLanguage: "api-svgrepo-com.svg",
-    typeCourse: ["Frontend", "Backend"],
-  },
-  {
-    nameLanguage: "Plugins",
-    imgLanguage: "Plugin--Streamline-Atlas.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "Typescript",
-    imgLanguage: "typescript-svgrepo-com.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "OOP",
-    imgLanguage: "",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "Webpack",
-    imgLanguage: "gulp-svgrepo-com.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "CMD",
-    imgLanguage: "terminal-svgrepo-com.svg",
-    typeCourse: ["Frontend", "Backend"],
-  },
-  {
-    nameLanguage: "Git & GitHub",
-    imgLanguage: "git-svgrepo-com.svg",
-    typeCourse: ["Frontend", "Backend"],
-  },
-  {
-    nameLanguage: "Angular",
-    imgLanguage: "angular-icon-svgrepo-com.svg",
-    typeCourse: ["Frontend"],
-  },
-  {
-    nameLanguage: "PHP",
-    imgLanguage: "php-svgrepo-com.svg",
-    typeCourse: ["Backend"],
-  },
-  {
-    nameLanguage: "MySQL",
-    imgLanguage: "mysql-logo-svgrepo-com.svg",
-    typeCourse: ["Backend"],
-  },
-  {
-    nameLanguage: "Postman",
-    imgLanguage: "postman-icon-svgrepo-com.svg",
-    typeCourse: ["Backend"],
-  },
-  {
-    nameLanguage: "Laravel",
-    imgLanguage: "laravel-svgrepo-com.svg",
-    typeCourse: ["Backend"],
-  },
-  {
-    nameLanguage: "Vite",
-    imgLanguage: "vite-svgrepo-com.svg",
-    typeCourse: ["Backend"],
-  },
-  {
-    nameLanguage: "MVC",
-    imgLanguage: "",
-    typeCourse: ["Backend"],
-  },
-  {
-    nameLanguage: "Pusher",
-    imgLanguage: "pusher-icon-svgrepo-com.svg",
-    typeCourse: ["Backend"],
-  },
-];
-
 document.addEventListener("DOMContentLoaded", function () {
   // Add show class to image
   const img = document.querySelector(".logoContainer img");
@@ -140,8 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const boxes = document.querySelectorAll(".box > .item");
 const partsTop = document.querySelectorAll(".part-top");
 const imgRightSideAbout = document.querySelector("#About .part.part-right img");
-const mainSrcImgRightSideAbout =
-  imgRightSideAbout.getAttribute("data-default-src");
+const mainSrcImgRightSideAbout = imgRightSideAbout.getAttribute("data-default-src");
 
 const TRANSITION_DURATION = 350;
 
@@ -217,3 +103,14 @@ function changeCoursesContent(typeOfCourse, btn) {
 
 // ④ Initial load — render Frontend on page load
 renderCourses("Frontend");
+
+
+// read Feedback data from dataFeedback.js and render it in the feedback section
+let feedbackContainer = document.querySelector(".swiper-wrapper");
+feedbacks.forEach((item) => {
+  feedbackContainer.innerHTML += `
+    <div class="swiper-slide">
+      <img src="imgs/feedBack/${item}" alt="Feedback Image" class="img-fluid">
+    </div>
+  `;
+})
