@@ -81,7 +81,7 @@ a {
     border-radius: 50%;
     animation: dot-appear 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
-.support{
+.support {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -93,12 +93,12 @@ a {
     @include respond(350) {
         bottom: 10px;
         right: 20px;
-        &::before{
-            width: 60px!important;
-            height: 60px!important;
+        &::before {
+            width: 60px !important;
+            height: 60px !important;
         }
-        img{
-            width: 45px!important;
+        img {
+            width: 45px !important;
         }
     }
     // Spinning border frame
@@ -108,7 +108,7 @@ a {
         width: 70px;
         height: 70px;
         border: 3px solid transparent;
-        
+
         border-top-color: #011582;
         border-right-color: #011582;
 
@@ -117,10 +117,9 @@ a {
         z-index: -1;
         backdrop-filter: blur(4px);
         box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
-        
     }
 
-    img{
+    img {
         width: 55px;
         height: 70px;
         object-fit: contain;

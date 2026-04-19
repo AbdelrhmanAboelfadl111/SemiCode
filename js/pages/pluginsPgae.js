@@ -84,13 +84,13 @@ const pluginsCategoryRow = document.querySelector("#sidebar__nav");
     }" data-index="${index + 2}">
       <span class="nav-item__icon">
         <img src="${pluginCategory.img}" loading="lazy" alt="${
-          pluginCategory.groupName
-        }"
+        pluginCategory.groupName
+      }"
           onerror="this.src='imgs/puzzle_4020290.png'" class="img-fluid">
       </span>
       <span class="nav-item__text">${pluginCategory.groupName}</span>
     </article>
-  `,
+  `
     )
     .join("");
 
@@ -103,7 +103,7 @@ let searched = false;
 // State
 const pluginsContainer = document.getElementById("pluginsContainer");
 const pluginsScrollContainer = document.getElementById(
-  "pluginsScrollContainer",
+  "pluginsScrollContainer"
 );
 const searchInput = document.querySelector('input[type="search"]');
 const NUMBER_OF_PLUGINS_CARD = 6;
@@ -114,14 +114,6 @@ let visibleCountEnd = 12;
 let loading = false;
 
 // ============================================================
-// Search Index
-const searchIndex = allPlugins.map((plugin) => ({
-  plugin,
-  searchString:
-    `${plugin.name} ${plugin.category} ${plugin.keywords}`.toLowerCase(),
-}));
-
-// ============================================================
 // Init Plugins
 appendPlugins(filteredPlugins);
 
@@ -130,10 +122,13 @@ appendPlugins(filteredPlugins);
 function searchPlugins(query) {
   const q = query.trim().toLowerCase();
   if (!q) return [...filteredPlugins]; // if search empty return all plugins
-  return searchIndex
-    .filter((item) => filteredPlugins.includes(item.plugin))
-    .filter((item) => item.searchString.includes(q))
-    .map((item) => item.plugin);
+  return filteredPlugins.filter((item) => {
+    return (
+      item.category.includes(q) ||
+      item.keywords.includes(q) ||
+      item.name.includes(q)
+    );
+  });
 }
 
 let searchTimeout;

@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-md position-fixed top-0 start-0 w-100">
         <div class="container nav-content">
 
@@ -141,11 +140,11 @@
                                             </p>
                                             <div class="row">
                                                 <div class="typeOfCourses changeActives my-3 col-12">
-                                                    <h6 class="me-2 active"
+                                                    <h6 class="typeOfCourse me-2 active" data-type="Frontend"
                                                         onclick="changeCoursesContent('Frontend', this);changeActives(this)">
                                                         <span>Frontend</span>
                                                     </h6>
-                                                    <h6
+                                                    <h6 class="typeOfCourse" data-type="Backend"
                                                         onclick="changeCoursesContent('Backend', this);changeActives(this)">
                                                         <span>Backend</span>
                                                     </h6>
@@ -154,13 +153,18 @@
                                                     <ul type="none" id="dataInter">
 
                                                     </ul>
+                                                    <a href="https://drive.google.com/file/d/1rs-3tc0LQYXjfGYlJFdyOoMlgdBgG0AP/view?usp=drivesdk"
+                                                        target="_blank" id="buttonRoadMap"
+                                                        class="travel-to-courses main-btn mt-2">
+                                                        <h6>See Road Map</h6>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="box  col-12">
+                            <div class="box      col-12">
                                 <div class="item">
                                     <div class="part part-top" data-img-src="imgs\about\Partnership-bro.svg">
                                         <h4 class="question mb-0">What the Countries Visited ?</h4>
@@ -189,17 +193,14 @@
                 </div>
                 <div class="col-lg-5 part part-right d-none d-lg-flex">
                     <div class="item">
-                        <img src="imgs/about/teamwork-concept-landing-page.png" data-default-src="imgs/about/teamwork-concept-landing-page.png" loading="eager" alt=""
+                        <img src="imgs/about/teamwork-concept-landing-page.png"
+                            data-default-src="imgs/about/teamwork-concept-landing-page.png" loading="eager" alt=""
                             class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <a href="#Home">
-            <div class="animation-img-2">
-                <img src="imgs/logoSemiCode.png" alt="" loading="lazy">
-            </div>
-        </a> -->
+
     </section>
 
     <section id="FeedBack" class="feedBack py-5 overflow-hidden">
@@ -213,22 +214,24 @@
                                 <h3 class="mb-0">Feedback</h3>
                             </div>
                         </div>
-                        <p class="mb-3">We place great importance on your feedback as it plays a vital role in enhancing the quality of our
+                        <p class="mb-3">We place great importance on your feedback as it plays a vital role in enhancing
+                            the quality of our
                             services. Your
-                            insights, suggestions, and experiences help us better understand your needs and continuously refine what we offer.
+                            insights, suggestions, and experiences help us better understand your needs and continuously
+                            refine what we offer.
                             We
-                            are committed to listening, learning, and evolving to ensure we deliver the best possible experience.</p>
+                            are committed to listening, learning, and evolving to ensure we deliver the best possible
+                            experience.</p>
                         <a href="https://semicode.tech/support" class="addFeedBack">
-                            <button class="support2"> <img src="imgs/icons/good-review.gif" alt="support icon">Add Feedback</button>
+                            <button class="support2"> <img src="imgs/icons/good-review.gif" alt="support icon">Add
+                                Feedback</button>
                         </a>
                     </div>
                 </div>
                 <div class="col-md-4 column2 p-3">
                     <div class="item">
                         <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                
-                            </div>
+                            <div class="swiper-wrapper"></div>
                         </div>
                     </div>
                 </div>
@@ -236,56 +239,30 @@
         </div>
     </section>
 
-    <footer id="Footer" class="bg-white py-3">
+    <footer id="Footer" class="bg-white py-2">
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
             <div class="textContainer w-100 text-center">
                 <img src="imgs/logoSemiCode.png" alt="logo SemiCod" loading="lazy">
                 <h5 class="mb-0">Copyright © 2026 by SemiCode</h5>
             </div>
-            <!-- <div class="mediaIcons">
-                <ul>
-                    <a href="https://wa.me/201021080042" target="_blank" target="_blank">
-                        <li>
-                            <img src="imgs/icons/whatsapp_12635043.png" alt="whatsapp icon" loading="lazy">
-                        </li>
-                    </a>
-                    <a href="https://www.facebook.com/share/1B1nTrkCXF/" target="_blank">
-                        <li>
-                            <img src="imgs/icons/social_13670330.png" alt="facebook icon" loading="lazy">
-                        </li>
-                    </a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=semicodeacademy@gmail.com &su=Hello&body=This is my message"
-                        target="_blank">
-                        <li>
-                            <img src="imgs/icons/gmail_5968534.png" alt="gmail icon" loading="lazy">
-                        </li>
-                    </a>
-                    <a href="https://www.youtube.com/@SemiCode" target="_blank">
-                        <li>
-                            <img src="imgs/icons/youtube_246153.png" alt="youtube icon" loading="lazy">
-                        </li>
-                    </a>
-                    <a href="https://www.linkedin.com/company/semicodetech/posts/?feedView=all" target="_blank">
-                        <li>
-                            <img src="imgs/icons/linkedin.png" alt="linkedin icon" loading="lazy">
-                        </li>
-                    </a>
-                </ul>
-            </div> -->
         </div>
     </footer>
 
+    <div class="popup" data-name="imgShow" onclick="closePopup()">
+        <div class="box">
+            <img src="" alt="" class="img-fluid">
+        </div>
+    </div>
 
     <script src="js/plugins/particles.min.js"></script>
     <script src="js/plugins/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="js/plugins/swiper-bundle.min.js"></script>
     <script src="js/plugins/swiperActive.js"></script>
     <script src="js/plugins/bootstrap.bundle.min.js"></script>
     <script src="js/plugins/using_Plugins.js"></script>
     <script src="js/data/dataCourse.js"></script>
     <script src="js/data/feedBack.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/pages/home.js"></script>
 </body>
 

@@ -1,6 +1,5 @@
 @use "../../abstract/index" as *;
 
-
 #About {
     position: relative;
     .base {
@@ -50,10 +49,10 @@
                                                 font-size: 22px;
                                                 transition-duration: 0.4s;
                                                 @include respond(350) {
-                                                    font-size: 18px!important;
+                                                    font-size: 18px !important;
                                                 }
                                                 @include respond(450) {
-                                                    font-size: 20px!important;
+                                                    font-size: 20px !important;
                                                 }
                                             }
                                             .question {
@@ -141,6 +140,8 @@
                                                         }
                                                     }
                                                     .counter {
+                                                        display: flex;
+                                                        flex-direction: column;
                                                         ul {
                                                             display: flex;
                                                             flex-wrap: wrap;
@@ -192,6 +193,102 @@
                                                                 }
                                                             }
                                                         }
+                                                        .travel-to-courses {
+                                                            width: max-content;
+                                                            border: 2px solid #2e295e;
+                                                            padding: 8px 24px;
+                                                            color: #2e295e;
+                                                            border-radius: 20px;
+                                                            margin-left: auto;
+                                                            transform: translateX(30px);
+                                                            opacity: 0;
+
+                                                            transition-duration: 0s;
+                                                            transition-property: all;
+
+                                                            &.active {
+                                                                transition-duration: 0.3s;
+                                                                transform: translateX(0);
+                                                                opacity: 1;
+                                                            }
+
+                                                            &.main-btn {
+                                                                position: relative;
+                                                                display: block;
+                                                                width: fit-content;
+                                                                text-decoration: none;
+                                                                padding: 8px 16px;
+                                                                overflow: hidden;
+                                                                border-radius: 1px;
+                                                                border: 2px solid #2e295e;
+                                                                letter-spacing: 1px;
+                                                                text-transform: uppercase;
+                                                                background-color: transparent;
+                                                                outline: none;
+
+                                                                &::before,
+                                                                &::after {
+                                                                    @include createElement($h: 25%);
+                                                                    @include position;
+                                                                    background-color: #2e295e;
+                                                                    transition:
+                                                                        all linear 0.5s 0.5s,
+                                                                        height linear 0.5s;
+                                                                }
+                                                                &::before {
+                                                                    top: 0%;
+                                                                    right: -100%;
+                                                                }
+                                                                &::after {
+                                                                    bottom: 0%;
+                                                                    left: -100%;
+                                                                }
+                                                                h6 {
+                                                                    position: relative;
+                                                                    z-index: 100;
+                                                                    color: #2e295e;
+                                                                    font-weight: 700;
+                                                                    font-size: 18px;
+                                                                    transition: color ease-out 0.5s 0.1s;
+                                                                    @include respond(350) {
+                                                                        font-size: 13px;
+                                                                    }
+                                                                    @include respond(450) {
+                                                                        font-size: 14px;
+                                                                    }
+                                                                }
+                                                                &:hover {
+                                                                    background-color: #2e295e;
+                                                                    transition: background linear 0.5s 0.5s;
+                                                                    &::before,
+                                                                    &::after {
+                                                                        height: 51%;
+                                                                        transition:
+                                                                            all linear 0.5s,
+                                                                            height linear 0.5s 0.5s;
+                                                                    }
+
+                                                                    &::before {
+                                                                        right: 0;
+                                                                    }
+                                                                    &::after {
+                                                                        left: 0;
+                                                                    }
+                                                                    h6 {
+                                                                        color: #fff;
+                                                                        transition: color ease-out 0.5s 0.7s;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            h6 {
+                                                                position: relative;
+                                                                z-index: 2100;
+                                                                font-size: 18px;
+                                                                letter-spacing: 0.5px;
+                                                                margin-bottom: 0;
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -213,7 +310,10 @@
                                         .part.part-bottom {
                                             max-height: 600px;
                                             @include respond(350) {
-                                                max-height: 750px;
+                                                max-height: 800px;
+                                            }
+                                            @include respond(450) {
+                                                max-height: 650px;
                                             }
                                             @include respond(650) {
                                                 max-height: 600px;
@@ -275,7 +375,7 @@
         @include respond(350) {
             display: none;
         }
-        img{
+        img {
             width: 50px;
         }
     }

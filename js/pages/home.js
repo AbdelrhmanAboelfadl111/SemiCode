@@ -1,48 +1,95 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Add show class to image
-  const img = document.querySelector(".logoContainer img");
-  if (img) {
-    img.classList.add("show");
+  // Hero Animations
+  document.querySelector(".logoContainer img")?.classList.add("show");
+  document.querySelector(".logoContainer h1")?.classList.add("show");
+  document.querySelector(".briefContainer p")?.classList.add("show");
+  document
+    .querySelectorAll(".buttonsContainer a")
+    .forEach((a) => a.classList.add("show"));
+
+  const CHUNK_SIZE = 10;
+  const LOAD_THRESHOLD = 3;
+  let loadedCount = 0;
+
+  const feedbackContainer = document.querySelector(".swiper-wrapper");
+
+  // Build single slide
+  function createSlide(imgSrcName) {
+    return `
+        <div class="swiper-slide"
+        onclick="colorBgFeedbackCard(this, 'imgs/feedBack/${imgSrcName}')"
+        data-img-src="imgs/feedBack/${imgSrcName}">
+          <img 
+            src="imgs/feedBack/${imgSrcName}"
+            alt="Feedback Image"
+            loading="lazy"
+            class="img-fluid"
+          >
+        </div>
+      `;
   }
 
-  // Add show class to h1
-  const h1 = document.querySelector(".logoContainer h1");
-  if (h1) {
-    h1.classList.add("show");
+  // Load next 10 slides
+  function loadNextChunk() {
+    if (loadedCount >= feedbacks.length) return;
+
+    const chunk = feedbacks.slice(loadedCount, loadedCount + CHUNK_SIZE);
+
+    feedbackContainer.insertAdjacentHTML(
+      "beforeend",
+      chunk.map(createSlide).join("")
+    );
+
+    loadedCount += chunk.length;
+
+    if (window.mySwiperInstance) {
+      window.mySwiperInstance.update();
+    }
   }
 
-  // Add show class to description paragraph
-  const description = document.querySelector(".briefContainer p");
-  if (description) {
-    description.classList.add("show");
-  }
+  loadNextChunk();
 
-  // Add show class to all links in buttons container
-  const links = document.querySelectorAll(".buttonsContainer a");
-  links.forEach((link) => {
-    link.classList.add("show");
+  // Init Swiper
+  window.mySwiperInstance = new Swiper(".mySwiper", {
+    effect: "cards",
+    grabCursor: true,
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+
+    cardsEffect: {
+      perSlideOffset: 8,
+      perSlideRotate: 2,
+      rotate: true,
+      slideShadows: false,
+    },
+
+    on: {
+      slideChange(swiper) {
+        const remaining = swiper.slides.length - swiper.activeIndex;
+
+        if (remaining <= LOAD_THRESHOLD) {
+          loadNextChunk();
+          swiper.update();
+        }
+      },
+    },
   });
 });
 
+// Cached DOM Elements
 const boxes = document.querySelectorAll(".box > .item");
 const partsTop = document.querySelectorAll(".part-top");
 const imgRightSideAbout = document.querySelector("#About .part.part-right img");
-const mainSrcImgRightSideAbout = imgRightSideAbout.getAttribute("data-default-src");
+const mainSrcImgRightSideAbout =
+  imgRightSideAbout.getAttribute("data-default-src");
+const dataInter = document.getElementById("dataInter");
 
 const TRANSITION_DURATION = 350;
 
-function changeImage(img, newSrc) {
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    img.setAttribute("src", newSrc);
-    img.classList.remove("fade-out");
-
-    img.classList.add("fade-in");
-    setTimeout(() => img.classList.remove("fade-in"), TRANSITION_DURATION);
-  }, TRANSITION_DURATION);
-}
-
+// Accordion
 partsTop.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.classList.contains("clicked")) return;
@@ -66,51 +113,5 @@ partsTop.forEach((btn) => {
   });
 });
 
-const dataInter = document.getElementById("dataInter");
-
-// ① Build & render — string concat once, no loop innerHTML +=
-function renderCourses(typeOfCourse) {
-  const filtered = dataCourses.filter((course) =>
-    course.typeCourse.includes(typeOfCourse)
-  );
-
-  // Build full string first, then set ONCE
-  dataInter.innerHTML = filtered
-    .map(
-      (course, index) => `
-    <li style="--i: ${index}">
-      <div class="img-language">
-        <img
-          src="imgs/logo_language/${course.imgLanguage}"
-          onerror="this.src='imgs/logo_language/default-svgrepo-com.svg'"
-          loading="lazy"
-          alt="${course.nameLanguage} icon"
-          class="img-fluid"
-        >
-      </div>
-      <div class="name-language">${course.nameLanguage}</div>
-    </li>
-  `
-    )
-    .join("");
-}
-
-// ② Change handler — guard + render
-function changeCoursesContent(typeOfCourse, btn) {
-  if (btn.classList.contains("active")) return;
-  renderCourses(typeOfCourse);
-}
-
-// ④ Initial load — render Frontend on page load
-renderCourses("Frontend");
-
-
-// read Feedback data from dataFeedback.js and render it in the feedback section
-let feedbackContainer = document.querySelector(".swiper-wrapper");
-feedbacks.forEach((item) => {
-  feedbackContainer.innerHTML += `
-    <div class="swiper-slide">
-      <img src="imgs/feedBack/${item}" alt="Feedback Image" class="img-fluid">
-    </div>
-  `;
-})
+// Init
+renderCourses("Frontend", true);
