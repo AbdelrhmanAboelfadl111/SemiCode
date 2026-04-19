@@ -148,6 +148,7 @@
     }
 
     start() {
+      document.body.classList.add("sc-loading");
       this.raf = requestAnimationFrame(() => this._tick());
     }
   }

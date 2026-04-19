@@ -42,6 +42,18 @@
                 padding: 5px;
                 width: 310px;
             }
+            @include respond(450){
+                padding: 5px;
+                width: 370px;
+            }
+            @include respond(650){
+                padding: 5px;
+                width: 610px;
+            }
+            @include respond(1050){
+                padding: 5px;
+                width: 900px;
+            }
 
             &.active {
                 transform: translateY(0px);

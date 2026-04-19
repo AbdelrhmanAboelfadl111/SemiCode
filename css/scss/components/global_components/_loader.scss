@@ -95,6 +95,11 @@ monospace;
     }
 }
 
+// ---- Hide scrollbar while loading ----
+body.sc-loading {
+    overflow: hidden;
+}
+
 // ---- Card ----
 .sc-card {
     position: relative;

@@ -447,6 +447,24 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
     width: 310px;
   }
 }
+@media (min-width: 371px) and (max-width: 1300px) {
+  .popup[data-name=imgShow] .box {
+    padding: 5px;
+    width: 370px;
+  }
+}
+@media (min-width: 576px) and (max-width: 1300px) {
+  .popup[data-name=imgShow] .box {
+    padding: 5px;
+    width: 610px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1300px) {
+  .popup[data-name=imgShow] .box {
+    padding: 5px;
+    width: 900px;
+  }
+}
 .popup[data-name=imgShow] .box.active {
   transform: translateY(0px);
   opacity: 1;
@@ -508,6 +526,10 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
+}
+
+body.sc-loading {
+  overflow: hidden;
 }
 
 .sc-card {
