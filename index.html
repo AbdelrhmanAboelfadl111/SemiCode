@@ -16,6 +16,50 @@
 </head>
 
 <body>
+
+    <div class="sc-overlay" id="sc-overlay">
+    
+        <div class="sc-card" id="sc-card">
+    
+            <!-- Logo -->
+            <div class="sc-logo-wrap">
+                <div class="sc-logo-ring"></div>
+                <div class="sc-logo-circle">
+                    <img src="imgs/logoSemiCode.png" alt="SemiCode logo" onerror="this.style.display='none';
+                                this.parentElement.querySelector('.sc-logo-fallback').style.display='flex';" />
+                    <div class="sc-logo-fallback">
+                        <span class="br">{</span>
+                        <span class="mid">SC</span>
+                        <span class="br">}</span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Brand -->
+            <div class="sc-name">SemiCode</div>
+            <div class="sc-sub">Learn by building</div>
+    
+            <!-- Progress -->
+            <div class="sc-progress-wrap">
+                <div class="sc-progress-meta">
+                    <span class="sc-pct-label">Loading</span>
+                    <span class="sc-pct-val" id="sc-pct">0%</span>
+                </div>
+                <div class="sc-track">
+                    <div class="sc-fill" id="sc-fill"></div>
+                </div>
+                <div class="sc-steps" id="sc-steps"></div>
+            </div>
+    
+            <!-- Status message -->
+            <div class="sc-status-msg" id="sc-msg">Initializing...</div>
+    
+    
+        </div>
+    </div>
+
+
+
     <nav class="navbar navbar-expand-md position-fixed top-0 start-0 w-100">
         <div class="container nav-content">
 
@@ -260,6 +304,7 @@
     <script src="js/plugins/swiperActive.js"></script>
     <script src="js/plugins/bootstrap.bundle.min.js"></script>
     <script src="js/plugins/using_Plugins.js"></script>
+    <script src="js/pages/loader.js"></script>
     <script src="js/data/dataCourse.js"></script>
     <script src="js/data/feedBack.js"></script>
     <script src="js/functions.js"></script>

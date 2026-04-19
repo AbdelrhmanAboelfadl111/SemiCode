@@ -455,6 +455,285 @@ nav.navbar .container .navbar-collapse ul.navbar-nav li.nav-item.active a.nav-li
   border-radius: 20px;
 }
 
+@keyframes sc-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes sc-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sc-overlay {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f3ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", system-ui, sans-serif;
+  position: fixed;
+  inset: 0;
+  z-index: 9999000;
+  overflow: hidden;
+}
+.sc-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 80%, rgba(83, 74, 183, 0.07) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(29, 158, 117, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.sc-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../imgs/bg_2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  pointer-events: none;
+}
+.sc-overlay.sc-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.sc-card {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  padding: 44px 48px 40px;
+  width: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 2px 32px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.04);
+  animation: sc-fade-in 0.5s ease forwards;
+}
+@media (max-width: 1300px) {
+  .sc-card {
+    width: 270px;
+  }
+}
+@media (min-width: 371px) and (max-width: 1300px) {
+  .sc-card {
+    width: 350px;
+  }
+}
+.sc-card .sc-name {
+  font-family: "Agency FB Bold" !important;
+  font-size: 30px;
+  color: #2E295E;
+}
+.sc-card.sc-complete .sc-name {
+  color: #1D9E75;
+}
+.sc-card.sc-complete .sc-pct-val {
+  color: #1D9E75;
+}
+
+.sc-logo-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 24px;
+}
+
+.sc-logo-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(83, 74, 183, 0.18);
+  animation: sc-spin 8s linear infinite;
+}
+.sc-logo-ring::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #534AB7;
+}
+
+.sc-logo-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f0eeff, #e8f4ff);
+  border: 0.5px solid rgba(83, 74, 183, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.sc-logo-circle img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+.sc-logo-circle .sc-logo-fallback {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  line-height: 1;
+}
+.sc-logo-circle .sc-logo-fallback .br {
+  font-size: 28px;
+  font-weight: 700;
+  color: #534AB7;
+}
+.sc-logo-circle .sc-logo-fallback .mid {
+  font-size: 11px;
+  color: #1D9E75;
+  letter-spacing: 1px;
+  margin: 1px 0;
+}
+
+.sc-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a2e;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  transition: color 0.4s ease;
+}
+
+.sc-sub {
+  font-size: 12px;
+  color: #888780;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.sc-progress-wrap {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.sc-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sc-pct-label {
+  font-size: 12px;
+  color: #B4B2A9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sc-pct-val {
+  font-size: 13px;
+  font-weight: 500;
+  color: #534AB7;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  min-width: 36px;
+  text-align: right;
+  transition: color 0.4s ease;
+}
+
+.sc-track {
+  width: 100%;
+  height: 5px;
+  background: #EEF0F2;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.sc-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #534AB7, #1D9E75);
+  transition: width 0.25s ease;
+  position: relative;
+}
+.sc-fill::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35));
+}
+
+.sc-steps {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.sc-step {
+  width: 28px;
+  height: 3px;
+  border-radius: 999px;
+  background: #E8E6E0;
+  transition: background 0.3s ease;
+}
+.sc-step.on {
+  background: #534AB7;
+}
+.sc-step.done {
+  background: #1D9E75;
+}
+
+.sc-status-msg {
+  font-size: 11px;
+  color: #B4B2A9;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+  min-height: 16px;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.sc-replay {
+  margin-top: 24px;
+  padding: 7px 20px;
+  font-size: 12px;
+  color: #534AB7;
+  border: 0.5px solid rgba(83, 74, 183, 0.3);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+  display: none;
+}
+.sc-replay:hover {
+  background: rgba(83, 74, 183, 0.06);
+}
+.sc-replay.visible {
+  display: inline-block;
+}
+
 header.home#Home {
   position: relative;
   background-image: url("../imgs/bg_2.jpg");
@@ -1063,6 +1342,7 @@ section#FeedBack .container .row .column2 .item .swiper.mySwiper .swiper-wrapper
   border-radius: 15px;
   filter: drop-shadow(0 5px 10px rgba(7, 7, 7, 0.678));
   width: 100%;
+  cursor: pointer;
 }
 section#FeedBack .container .row .column2 .item .swiper.mySwiper .swiper-wrapper .swiper-slide .swiper-lazy-preloader {
   border-color: #2e295e;
@@ -1247,7 +1527,7 @@ footer .container .mediaIcons ul a li img {
   margin-top: 10px;
 }
 #PluginHeader > main section.plugins-row .cover .container-fluid .row .column .item .plugin__name h3 {
-  font-size: 22px;
+  font-size: 24px;
 }
 @media (max-width: 1300px) {
   #PluginHeader > main section.plugins-row .cover .container-fluid .row .column .item .plugin__name h3 {
@@ -1265,6 +1545,7 @@ footer .container .mediaIcons ul a li img {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 0 !important;
+  letter-spacing: 0.5px;
 }
 @media (max-width: 1300px) {
   #PluginHeader > main section.plugins-row .cover .container-fluid .row .column .item .plugin__category h4 {
