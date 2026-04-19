@@ -147,7 +147,7 @@
                                             font-size: 14px;
                                             font-weight: 500;
                                             margin-bottom: 0 !important;
-                                            // padding: 5px;
+                                            letter-spacing: .5px;
                                             @include respond(350) {
                                                 font-size: 12px;
                                             }
